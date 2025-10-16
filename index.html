@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allied Environments - Customer Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                    <path d="M20 8 L20 32 M8 20 L32 20" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="20" cy="20" r="4" fill="currentColor"/>
+                </svg>
+                <span class="logo-text">Allied Environments</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-page="dashboard">Dashboard</a></li>
+                <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="#" class="nav-link" data-page="loyalty">Loyalty Rewards</a></li>
+                <li><a href="#" class="nav-link" data-page="sustainability">Sustainability</a></li>
+                <li><a href="#" class="nav-link" data-page="billing">Billing</a></li>
+            </ul>
+            <div class="nav-user">
+                <span class="user-name">Luxury Resort Group</span>
+                <div class="user-avatar">LR</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Welcome back, Luxury Resort Group</h1>
+                    <p class="hero-subtitle">Your complete facility management dashboard</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">🌿</div>
+                        <div class="stat-info">
+                            <div class="stat-value">6</div>
+                            <div class="stat-label">Active Services</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Upcoming This Week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">♻️</div>
+                        <div class="stat-info">
+                            <div class="stat-value">-24%</div>
+                            <div class="stat-label">Carbon Reduction</div>
+                        </div>
+                    </div>
+                    <div class="stat-card tier-badge">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-info">
+                            <div class="stat-value">Gold Tier</div>
+                            <div class="stat-label">15% Discount Active</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upcoming Services -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Upcoming Services</h2>
+                    <button class="btn-secondary" onclick="showPage('services')">View All</button>
+                </div>
+                <div class="service-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <div class="date-day">MON</div>
+                            <div class="date-num">14</div>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="service-header">
+                                <div class="service-title">
+                                    <span class="service-icon">🌳</span>
+                                    <span>Landscaping Maintenance</span>
+                                </div>
+                                <span class="status-badge status-scheduled">Scheduled</span>
+                            </div>
+                            <div class="service-details">
+                                <p>Main entrance and courtyard maintenance</p>
+                                <div class="service-meta">
+                                    <span>⏰ 8:00 AM - 11:00 AM</span>
+                                    <span>👤 Team Lead: Marcus Chen</span>
+                                </div>
+                            </div>
+                            <button class="btn-link">Track Service</button>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <div class="date-day">TUE</div>
+                            <div class="date-num">15</div>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="service-header">
+                                <div class="service-title">
+                                    <span class="service-icon">🪴</span>
+                                    <span>Indoor Plant Service</span>
+                                </div>
+                                <span class="status-badge status-scheduled">Scheduled</span>
+                            </div>
+                            <div class="service-details">
+                                <p>Lobby and conference room plant care</p>
+                                <div class="service-meta">
+                                    <span>⏰ 2:00 PM - 3:30 PM</span>
+                                    <span>👤 Specialist: Sarah Martinez</span>
+                                </div>
+                            </div>
+                            <div class="ai-insight">
+                                <span class="ai-badge">AI Insight</span>
+                                <p>3 plants showing early stress signs - preventive care included</p>
+                            </div>
+                            <button class="btn-link">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <div class="date-day">WED</div>
+                            <div class="date-num">16</div>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="service-header">
+                                <div class="service-title">
+                                    <span class="service-icon">🧺</span>
+                                    <span>Laundry & Linen Service</span>
+                                </div>
+                                <span class="status-badge status-scheduled">Scheduled</span>
+                            </div>
+                            <div class="service-details">
+                                <p>Weekly pickup: Guest robes, tablecloths, uniforms</p>
+                                <div class="service-meta">
+                                    <span>⏰ 10:00 AM - 10:30 AM</span>
+                                    <span>📦 Estimated: 45 items</span>
+                                </div>
+                            </div>
+                            <button class="btn-link">Modify Order</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Quick Actions</h2>
+                </div>
+                <div class="quick-actions">
+                    <button class="action-card" onclick="showPage('services')">
+                        <div class="action-icon">📅</div>
+                        <div class="action-text">
+                            <div class="action-title">Book Service</div>
+                            <div class="action-subtitle">Schedule new service</div>
+                        </div>
+                    </button>
+                    <button class="action-card">
+                        <div class="action-icon">💬</div>
+                        <div class="action-text">
+                            <div class="action-title">Contact Support</div>
+                            <div class="action-subtitle">24/7 assistance</div>
+                        </div>
+                    </button>
+                    <button class="action-card" onclick="showPage('sustainability')">
+                        <div class="action-icon">📊</div>
+                        <div class="action-text">
+                            <div class="action-title">View Reports</div>
+                            <div class="action-subtitle">ESG & analytics</div>
+                        </div>
+                    </button>
+                    <button class="action-card">
+                        <div class="action-icon">⚙️</div>
+                        <div class="action-text">
+                            <div class="action-title">Settings</div>
+                            <div class="action-subtitle">Preferences & alerts</div>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- AI Recommendations -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Personalized Recommendations</h2>
+                    <span class="ai-badge">Powered by AI</span>
+                </div>
+                <div class="recommendations">
+                    <div class="recommendation-card">
+                        <div class="recommendation-header">
+                            <span class="recommendation-icon">🌺</span>
+                            <h3>Seasonal Landscaping Refresh</h3>
+                        </div>
+                        <p>Based on your location and preferences, we recommend updating your seasonal plantings for spring. Expected bloom period: March-May.</p>
+                        <div class="recommendation-footer">
+                            <span class="recommendation-savings">Save 20% when bundled</span>
+                            <button class="btn-primary-sm">Learn More</button>
+                        </div>
+                    </div>
+                    <div class="recommendation-card">
+                        <div class="recommendation-header">
+                            <span class="recommendation-icon">☕</span>
+                            <h3>Premium Coffee Upgrade</h3>
+                        </div>
+                        <p>Your guests rated coffee service highly. Upgrade to our sustainable, single-origin premium blend for enhanced experience.</p>
+                        <div class="recommendation-footer">
+                            <span class="recommendation-savings">Trial: First month free</span>
+                            <button class="btn-primary-sm">Try It</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Page -->
+        <div id="services" class="page">
+            <section class="page-header">
+                <h1>Service Management</h1>
+                <p>Book, manage, and track all your Allied Environments services</p>
+            </section>
+
+            <!-- Service Categories -->
+            <section class="section">
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">🌳</span>
+                            <h3>Landscaping</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Professional landscaping design and maintenance for your property</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Next Service</span>
+                                <span class="stat-value">Oct 14, 8:00 AM</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Frequency</span>
+                                <span class="stat-value">Weekly</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Schedule</button>
+                            <button class="btn-link">View History</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">🪴</span>
+                            <h3>Indoor Plants</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Biophilic design and maintenance for healthier indoor environments</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Next Service</span>
+                                <span class="stat-value">Oct 15, 2:00 PM</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Plants Monitored</span>
+                                <span class="stat-value">47 units</span>
+                            </div>
+                        </div>
+                        <div class="ai-insight">
+                            <span class="ai-badge-sm">AI</span>
+                            <p>3 plants need attention - auto-scheduled</p>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Manage</button>
+                            <button class="btn-link">Plant Health</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">☕</span>
+                            <h3>Coffee & Water</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Premium coffee and water solutions with sustainability focus</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Auto-Replenish</span>
+                                <span class="stat-value">Enabled</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Monthly Usage</span>
+                                <span class="stat-value">280 cups</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Reorder</button>
+                            <button class="btn-link">Settings</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">🧴</span>
+                            <h3>Hotel Amenities</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Custom branded amenities with eco-friendly packaging</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Custom Brand</span>
+                                <span class="stat-value">Resort Premium Line</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Next Delivery</span>
+                                <span class="stat-value">Oct 20</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Order</button>
+                            <button class="btn-link">Customize</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">🧺</span>
+                            <h3>Laundry Service</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Commercial laundry with eco-friendly cleaning processes</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Next Pickup</span>
+                                <span class="stat-value">Oct 16, 10:00 AM</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Weekly Average</span>
+                                <span class="stat-value">45 items</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Schedule Pickup</button>
+                            <button class="btn-link">Track Order</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="service-card-icon">👔</span>
+                            <h3>Garment Rental</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="service-description">Uniform and event garment rental with maintenance</p>
+                        <div class="service-stats">
+                            <div class="service-stat">
+                                <span class="stat-label">Active Rentals</span>
+                                <span class="stat-value">32 uniforms</span>
+                            </div>
+                            <div class="service-stat">
+                                <span class="stat-label">Rotation</span>
+                                <span class="stat-value">Bi-weekly</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn-secondary-sm">Manage Inventory</button>
+                            <button class="btn-link">Size Guide</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bundle Upgrade CTA -->
+            <section class="section">
+                <div class="upgrade-banner">
+                    <div class="upgrade-content">
+                        <h3>🌟 You're on Gold Tier (15% discount)</h3>
+                        <p>You're using 6 services and saving significantly. Refer a colleague to earn additional rewards!</p>
+                    </div>
+                    <button class="btn-primary">Refer & Earn</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Loyalty Rewards Page -->
+        <div id="loyalty" class="page">
+            <section class="page-header">
+                <h1>Loyalty Rewards Program</h1>
+                <p>Your rewards dashboard - track points, savings, and exclusive benefits</p>
+            </section>
+
+            <!-- Loyalty Tier Status -->
+            <section class="section">
+                <div class="loyalty-hero">
+                    <div class="tier-showcase">
+                        <div class="current-tier gold">
+                            <div class="tier-icon">
+                                <svg viewBox="0 0 100 100" class="tier-badge-icon">
+                                    <circle cx="50" cy="50" r="45" fill="#f59e0b"/>
+                                    <text x="50" y="60" text-anchor="middle" fill="white" font-size="24" font-weight="bold">GOLD</text>
+                                </svg>
+                            </div>
+                            <h2>Gold Tier Member</h2>
+                            <p class="tier-benefit">Currently enjoying 15% discount on all services</p>
+                        </div>
+                        <div class="tier-progress-container">
+                            <div class="tier-labels">
+                                <span class="tier-label bronze">Bronze (2 services)</span>
+                                <span class="tier-label silver">Silver (3 services)</span>
+                                <span class="tier-label gold active">Gold (4 services)</span>
+                                <span class="tier-label platinum">Platinum (All 6 services)</span>
+                            </div>
+                            <div class="tier-progress-bar">
+                                <div class="tier-progress-fill" style="width: 75%;"></div>
+                                <div class="tier-milestone" style="left: 25%;"></div>
+                                <div class="tier-milestone" style="left: 50%;"></div>
+                                <div class="tier-milestone active" style="left: 75%;"></div>
+                                <div class="tier-milestone" style="left: 100%;"></div>
+                            </div>
+                            <p class="tier-next-level">Add 2 more services to reach Platinum Tier (20% discount)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rewards Summary Cards -->
+            <section class="section">
+                <h2>Your Rewards Summary</h2>
+                <div class="rewards-grid">
+                    <div class="reward-card primary">
+                        <div class="reward-icon">💰</div>
+                        <div class="reward-data">
+                            <div class="reward-value">R18,245</div>
+                            <div class="reward-label">Total Savings This Year</div>
+                            <div class="reward-detail">From Gold Tier 15% discount</div>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-icon">🎁</div>
+                        <div class="reward-data">
+                            <div class="reward-value">2,450</div>
+                            <div class="reward-label">Reward Points Available</div>
+                            <div class="reward-detail">R245 redemption value</div>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-icon">🏆</div>
+                        <div class="reward-data">
+                            <div class="reward-value">Gold</div>
+                            <div class="reward-label">Member Since</div>
+                            <div class="reward-detail">January 2023 (33 months)</div>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-icon">📈</div>
+                        <div class="reward-data">
+                            <div class="reward-value">6/6</div>
+                            <div class="reward-label">Services Contracted</div>
+                            <div class="reward-detail">Upgrade to Platinum available!</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bundled Services Tracker -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Your Allied Services Bundle</h2>
+                    <span class="bundle-badge">Facility Wellness Pack</span>
+                </div>
+                <div class="bundle-visualization">
+                    <div class="bundle-services">
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">🌳</div>
+                            <h3>Landscaping</h3>
+                            <p>Weekly maintenance</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">🪴</div>
+                            <h3>Indoor Plants</h3>
+                            <p>Biweekly care</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">☕</div>
+                            <h3>Coffee & Water</h3>
+                            <p>Auto-replenish</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">🧴</div>
+                            <h3>Hotel Amenities</h3>
+                            <p>Monthly delivery</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">🧺</div>
+                            <h3>Laundry Service</h3>
+                            <p>Weekly pickup</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="bundle-service active">
+                            <div class="bundle-service-icon">👔</div>
+                            <h3>Garment Rental</h3>
+                            <p>32 uniforms</p>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                    </div>
+                    <div class="bundle-benefits">
+                        <h3>Your Bundle Benefits</h3>
+                        <ul class="benefits-list">
+                            <li>✓ Single consolidated invoice</li>
+                            <li>✓ Priority scheduling across all services</li>
+                            <li>✓ 15% discount on all services</li>
+                            <li>✓ Dedicated account manager</li>
+                            <li>✓ Quarterly Business Reviews</li>
+                            <li>✓ Free ESG impact reports</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gamified Tier Upgrade Incentive -->
+            <section class="section">
+                <div class="upgrade-incentive-card">
+                    <div class="incentive-header">
+                        <h2>Unlock Platinum Tier Benefits</h2>
+                        <span class="upgrade-tag">UPGRADE AVAILABLE</span>
+                    </div>
+                    <div class="incentive-content">
+                        <div class="incentive-left">
+                            <h3>You're Already Using All 6 Services!</h3>
+                            <p>We've noticed your exceptional partnership with Allied Environments. As a valued client using our complete service portfolio, you qualify for our exclusive Platinum Tier upgrade.</p>
+                            <div class="platinum-benefits">
+                                <h4>Platinum Tier Benefits:</h4>
+                                <div class="benefit-grid">
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">💎</span>
+                                        <span>20% discount (upgrade from 15%)</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🎟️</span>
+                                        <span>VIP event invitations</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🚀</span>
+                                        <span>Priority access to new services</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">📊</span>
+                                        <span>Co-branded case studies</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🤝</span>
+                                        <span>Strategic Partner status</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🎁</span>
+                                        <span>Complimentary service credits quarterly</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="incentive-right">
+                            <div class="savings-calculator">
+                                <h4>Your Potential Savings</h4>
+                                <div class="savings-breakdown">
+                                    <div class="savings-row">
+                                        <span>Current Gold Tier (15%):</span>
+                                        <span class="savings-amount">R1,267/month</span>
+                                    </div>
+                                    <div class="savings-row platinum-highlight">
+                                        <span>Platinum Tier (20%):</span>
+                                        <span class="savings-amount">R1,690/month</span>
+                                    </div>
+                                    <div class="savings-row total">
+                                        <span>Additional Savings:</span>
+                                        <span class="savings-amount">+R423/month</span>
+                                    </div>
+                                    <div class="savings-annual">
+                                        <span>Annual Benefit:</span>
+                                        <span class="savings-amount-large">R5,076</span>
+                                    </div>
+                                </div>
+                                <button class="btn-primary">Request Platinum Upgrade</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Available Rewards -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Redeem Your Rewards</h2>
+                    <p class="section-subtitle">You have 2,450 points ($245 value) available</p>
+                </div>
+                <div class="rewards-catalog">
+                    <div class="reward-item">
+                        <div class="reward-item-icon">☕</div>
+                        <h3>Free Coffee Supply</h3>
+                        <p>One month of premium coffee (200 cups)</p>
+                        <div class="reward-cost">500 points</div>
+                        <button class="btn-secondary-sm">Redeem</button>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon">🌳</div>
+                        <h3>Complimentary Landscaping Visit</h3>
+                        <p>Full landscaping service and maintenance</p>
+                        <div class="reward-cost">800 points</div>
+                        <button class="btn-secondary-sm">Redeem</button>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon">🪴</div>
+                        <h3>Plant Refresh Package</h3>
+                        <p>Upgrade 5 indoor plants to premium varieties</p>
+                        <div class="reward-cost">600 points</div>
+                        <button class="btn-secondary-sm">Redeem</button>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon">💰</div>
+                        <h3>Service Credit</h3>
+                        <p>R100 credit towards any service</p>
+                        <div class="reward-cost">1,000 points</div>
+                        <button class="btn-secondary-sm">Redeem</button>
+                    </div>
+                    <div class="reward-item featured">
+                        <div class="reward-item-icon">🎟️</div>
+                        <h3>ESG Workshop Invitation</h3>
+                        <p>Exclusive sustainability networking event</p>
+                        <div class="reward-cost">1,500 points</div>
+                        <button class="btn-primary-sm">Redeem</button>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon">📊</div>
+                        <h3>Custom Analytics Report</h3>
+                        <p>Deep-dive analysis of your facility operations</p>
+                        <div class="reward-cost">1,200 points</div>
+                        <button class="btn-secondary-sm">Redeem</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Earning History -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Recent Rewards Activity</h2>
+                    <button class="btn-secondary">View Full History</button>
+                </div>
+                <div class="rewards-history">
+                    <div class="history-item earned">
+                        <div class="history-icon">+</div>
+                        <div class="history-details">
+                            <h4>Monthly Service Bonus</h4>
+                            <p>October 2025 - All 6 services active</p>
+                        </div>
+                        <div class="history-points">+450 points</div>
+                        <div class="history-date">Oct 1, 2025</div>
+                    </div>
+                    <div class="history-item earned">
+                        <div class="history-icon">+</div>
+                        <div class="history-details">
+                            <h4>Referral Bonus</h4>
+                            <p>Peninsula Resort signed up</p>
+                        </div>
+                        <div class="history-points">+1,000 points</div>
+                        <div class="history-date">Sep 15, 2025</div>
+                    </div>
+                    <div class="history-item redeemed">
+                        <div class="history-icon">-</div>
+                        <div class="history-details">
+                            <h4>Redeemed: Free Coffee Supply</h4>
+                            <p>Premium blend for August</p>
+                        </div>
+                        <div class="history-points">-500 points</div>
+                        <div class="history-date">Aug 5, 2025</div>
+                    </div>
+                    <div class="history-item earned">
+                        <div class="history-icon">+</div>
+                        <div class="history-details">
+                            <h4>Milestone Achievement</h4>
+                            <p>2 year partnership anniversary</p>
+                        </div>
+                        <div class="history-points">+500 points</div>
+                        <div class="history-date">Jul 1, 2025</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Referral Program -->
+            <section class="section">
+                <div class="referral-program-card">
+                    <div class="referral-content">
+                        <h2>Refer a Business & Earn Rewards</h2>
+                        <p>Share the Allied Environments experience with colleagues and earn 1,000 reward points for each successful referral.</p>
+                        <div class="referral-stats">
+                            <div class="referral-stat">
+                                <div class="referral-stat-value">3</div>
+                                <div class="referral-stat-label">Successful Referrals</div>
+                            </div>
+                            <div class="referral-stat">
+                                <div class="referral-stat-value">3,000</div>
+                                <div class="referral-stat-label">Points Earned</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="referral-action">
+                        <input type="text" class="referral-link" value="https://allied.com/ref/LRG2023" readonly>
+                        <button class="btn-primary">Copy Link</button>
+                        <button class="btn-secondary">Share via Email</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sustainability Page -->
+        <div id="sustainability" class="page">
+            <section class="page-header">
+                <h1>Sustainability Dashboard</h1>
+                <p>Track your environmental impact and ESG metrics</p>
+            </section>
+
+            <!-- Impact Summary -->
+            <section class="section">
+                <div class="impact-cards">
+                    <div class="impact-card primary">
+                        <div class="impact-icon">🌍</div>
+                        <div class="impact-data">
+                            <div class="impact-value">-24%</div>
+                            <div class="impact-label">Carbon Footprint Reduction</div>
+                            <div class="impact-detail">vs. previous year baseline</div>
+                        </div>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">💧</div>
+                        <div class="impact-data">
+                            <div class="impact-value">12,450</div>
+                            <div class="impact-label">Gallons Water Saved</div>
+                            <div class="impact-detail">Smart irrigation + recycling</div>
+                        </div>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">♻️</div>
+                        <div class="impact-data">
+                            <div class="impact-value">89%</div>
+                            <div class="impact-label">Waste Diverted</div>
+                            <div class="impact-detail">From landfill to composting</div>
+                        </div>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">⚡</div>
+                        <div class="impact-data">
+                            <div class="impact-value">100%</div>
+                            <div class="impact-label">Renewable Energy</div>
+                            <div class="impact-detail">All services powered by clean energy</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Carbon Tracker -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Monthly Carbon Emissions</h2>
+                    <select class="filter-select">
+                        <option>Last 6 Months</option>
+                        <option>Last Year</option>
+                        <option>All Time</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="carbonChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #10b981;"></span>
+                        <span>Current Year (Optimized Routes)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #94a3b8;"></span>
+                        <span>Previous Year (Baseline)</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sustainability Initiatives -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Active Sustainability Initiatives</h2>
+                </div>
+                <div class="initiatives-grid">
+                    <div class="initiative-card">
+                        <div class="initiative-header">
+                            <span class="initiative-icon">🚛</span>
+                            <h3>Optimized Delivery Routes</h3>
+                        </div>
+                        <div class="initiative-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%"></div>
+                            </div>
+                            <span class="progress-label">92% efficiency gain</span>
+                        </div>
+                        <p class="initiative-impact">Reduced 450 kg CO₂ this month by consolidating service visits</p>
+                    </div>
+
+                    <div class="initiative-card">
+                        <div class="initiative-header">
+                            <span class="initiative-icon">🌱</span>
+                            <h3>Organic Waste Composting</h3>
+                        </div>
+                        <div class="initiative-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 89%"></div>
+                            </div>
+                            <span class="progress-label">89% waste diverted</span>
+                        </div>
+                        <p class="initiative-impact">285 kg of landscape waste converted to nutrient-rich compost</p>
+                    </div>
+
+                    <div class="initiative-card">
+                        <div class="initiative-header">
+                            <span class="initiative-icon">💧</span>
+                            <h3>Smart Water Management</h3>
+                        </div>
+                        <div class="initiative-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 78%"></div>
+                            </div>
+                            <span class="progress-label">78% water reduction</span>
+                        </div>
+                        <p class="initiative-impact">IoT sensors optimize irrigation timing based on soil moisture</p>
+                    </div>
+
+                    <div class="initiative-card">
+                        <div class="initiative-header">
+                            <span class="initiative-icon">🌿</span>
+                            <h3>Native Plant Program</h3>
+                        </div>
+                        <div class="initiative-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <span class="progress-label">65% native species</span>
+                        </div>
+                        <p class="initiative-impact">Reduced maintenance needs and supports local biodiversity</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ESG Report Download -->
+            <section class="section">
+                <div class="report-banner">
+                    <div class="report-content">
+                        <h3>📄 Monthly ESG Report Available</h3>
+                        <p>Comprehensive sustainability metrics ready for your stakeholders and investors</p>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn-secondary">Preview Report</button>
+                        <button class="btn-primary">Download PDF</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sustainability Improvement Opportunities (Client View) -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Our Partnership Sustainability Goals</h2>
+                    <p class="section-subtitle">Together we're driving environmental excellence</p>
+                </div>
+
+                <div class="client-sustainability-goals">
+                    <!-- Water Conservation Together -->
+                    <div class="client-goal-card environmental">
+                        <div class="goal-header">
+                            <div class="goal-icon">💧</div>
+                            <h3>Water Conservation Program</h3>
+                            <span class="goal-impact">Savings: 45,200 L/month</span>
+                        </div>
+                        <p class="goal-description">Our partnership includes use of non-potable water for your landscaping irrigation and facility cleaning, reducing potable water consumption by 78%.</p>
+                        <div class="goal-yourimpact">
+                            <strong>Your Impact:</strong> By participating in this program, you're contributing to regional water conservation efforts and reducing your facility's environmental footprint.
+                        </div>
+                    </div>
+
+                    <!-- Waste Reduction & Recycling -->
+                    <div class="client-goal-card environmental">
+                        <div class="goal-header">
+                            <div class="goal-icon">♻️</div>
+                            <h3>Comprehensive Recycling Initiative</h3>
+                            <span class="goal-impact">Waste Diverted: 850 kg/month</span>
+                        </div>
+                        <p class="goal-description">We recycle all bottles, hangers, and garments from your facility in partnership with local schools for educational and fundraising projects.</p>
+                        <div class="goal-yourimpact">
+                            <strong>Your Impact:</strong> Your participation supports community education programs and diverts significant waste from landfills.
+                        </div>
+                    </div>
+
+                    <!-- Digital Sustainability Platform -->
+                    <div class="client-goal-card operational">
+                        <div class="goal-header">
+                            <div class="goal-icon">📱</div>
+                            <h3>Paperless Operations</h3>
+                            <span class="goal-impact">Paper Saved: 95% reduction</span>
+                        </div>
+                        <p class="goal-description">All your service reports, invoices, and sustainability metrics are delivered digitally through our platform, eliminating paper waste.</p>
+                        <div class="goal-yourimpact">
+                            <strong>Your Impact:</strong> You're part of our initiative that has digitized over 1,240 reports this year.
+                        </div>
+                    </div>
+
+                    <!-- Community Engagement -->
+                    <div class="client-goal-card social">
+                        <div class="goal-header">
+                            <div class="goal-icon">🌱</div>
+                            <h3>Community Partnership Programs</h3>
+                            <span class="goal-impact">Supporting 4 local schools</span>
+                        </div>
+                        <p class="goal-description">Your recycling contributions support agricultural school programs and greenhouse projects that train students in sustainable horticulture.</p>
+                        <div class="goal-yourimpact">
+                            <strong>Your Impact:</strong> Skills development for local youth and promotion of sustainable practices in your community.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Client Participation Opportunities -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Get More Involved</h2>
+                    <p class="section-subtitle">Additional ways to enhance sustainability impact</p>
+                </div>
+
+                <div class="participation-opportunities">
+                    <div class="participation-card">
+                        <div class="participation-icon">🎓</div>
+                        <h3>Sustainability Workshops</h3>
+                        <p>Invite your team to attend our quarterly sustainability workshops on water conservation, energy efficiency, and waste reduction.</p>
+                        <div class="participation-details">
+                            <span class="participation-stat">Next Workshop: Nov 15, 2025</span>
+                            <span class="participation-stat">145 participants this year</span>
+                        </div>
+                        <button class="btn-primary-sm">Register Your Team</button>
+                    </div>
+
+                    <div class="participation-card">
+                        <div class="participation-icon">🏆</div>
+                        <h3>Sustainability Champion Program</h3>
+                        <p>Designate a sustainability champion at your facility to liaise with our Green Team and track progress on joint initiatives.</p>
+                        <div class="participation-details">
+                            <span class="participation-stat">4.7/5 satisfaction rating</span>
+                            <span class="participation-stat">Quarterly recognition</span>
+                        </div>
+                        <button class="btn-primary-sm">Nominate Champion</button>
+                    </div>
+
+                    <div class="participation-card">
+                        <div class="participation-icon">🎁</div>
+                        <h3>Community Fundraising Partnership</h3>
+                        <p>Participate in our school fundraising programs through enhanced recycling collection and donation matching.</p>
+                        <div class="participation-details">
+                            <span class="participation-stat">R3,200 raised this quarter</span>
+                            <span class="participation-stat">4 partner schools</span>
+                        </div>
+                        <button class="btn-primary-sm">Learn More</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sustainability Certifications & Recognition -->
+            <section class="section">
+                <div class="certification-showcase">
+                    <div class="certification-content">
+                        <h2>Working Toward ISO 14001 Certification</h2>
+                        <p>Our partnership contributes to Allied Environments' pursuit of internationally recognized sustainability certifications. Your facility benefits from our commitment to validated environmental management standards.</p>
+                        <div class="certification-benefits">
+                            <div class="cert-benefit">
+                                <span class="cert-icon">✓</span>
+                                <span>Audited environmental practices</span>
+                            </div>
+                            <div class="cert-benefit">
+                                <span class="cert-icon">✓</span>
+                                <span>Third-party verification of sustainability claims</span>
+                            </div>
+                            <div class="cert-benefit">
+                                <span class="cert-icon">✓</span>
+                                <span>Enhanced credibility for your ESG reporting</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="certification-timeline">
+                        <h3>Certification Roadmap</h3>
+                        <div class="timeline-steps">
+                            <div class="timeline-step completed">
+                                <span class="step-number">1</span>
+                                <span class="step-label">KPI Framework</span>
+                                <span class="step-status">✓ Completed</span>
+                            </div>
+                            <div class="timeline-step in-progress">
+                                <span class="step-number">2</span>
+                                <span class="step-label">Documentation</span>
+                                <span class="step-status">72% Complete</span>
+                            </div>
+                            <div class="timeline-step pending">
+                                <span class="step-number">3</span>
+                                <span class="step-label">External Audit</span>
+                                <span class="step-status">Scheduled: Mar 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Billing Page -->
+        <div id="billing" class="page">
+            <section class="page-header">
+                <h1>Billing & Payments</h1>
+                <p>Manage invoices, payments, and subscription details</p>
+            </section>
+
+            <!-- Billing Summary -->
+            <section class="section">
+                <div class="billing-summary">
+                    <div class="billing-card">
+                        <h3>Current Month</h3>
+                        <div class="billing-amount">R8,450</div>
+                        <div class="billing-detail">October 2025</div>
+                        <div class="billing-savings">Saved R1,492 with Gold Tier (15%)</div>
+                    </div>
+                    <div class="billing-card">
+                        <h3>Next Payment Due</h3>
+                        <div class="billing-amount">R3,200</div>
+                        <div class="billing-detail">Due: October 31, 2025</div>
+                        <button class="btn-primary">Pay Now</button>
+                    </div>
+                    <div class="billing-card">
+                        <h3>Payment Method</h3>
+                        <div class="payment-method">
+                            <span class="card-icon">💳</span>
+                            <span>Visa ending in 4242</span>
+                        </div>
+                        <button class="btn-link">Update Payment</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Invoices -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Recent Invoices</h2>
+                    <button class="btn-secondary">View All</button>
+                </div>
+                <div class="invoice-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Date</th>
+                                <th>Services</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#INV-2025-001</td>
+                                <td>Sep 30, 2025</td>
+                                <td>All Services (6)</td>
+                                <td>R8,225</td>
+                                <td><span class="status-badge status-paid">Paid</span></td>
+                                <td><button class="btn-link">Download</button></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-2025-002</td>
+                                <td>Aug 31, 2025</td>
+                                <td>All Services (6)</td>
+                                <td>R8,100</td>
+                                <td><span class="status-badge status-paid">Paid</span></td>
+                                <td><button class="btn-link">Download</button></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-2025-003</td>
+                                <td>Jul 31, 2025</td>
+                                <td>All Services (6)</td>
+                                <td>R8,350</td>
+                                <td><span class="status-badge status-paid">Paid</span></td>
+                                <td><button class="btn-link">Download</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
