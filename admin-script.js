@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAdminFeatures();
     simulateRealTimeData();
     setupAdminInteractions();
+    setupDropdownNavigation();
 });
 
 // ===== Admin Features Initialization =====
@@ -74,7 +75,8 @@ function updateServiceCounts() {
             completedStat.textContent = currentCompleted + 1;
             inProgressStat.textContent = currentInProgress - 1;
 
-            showAdminNotification('Service completed successfully! ✓', 'success');
+            // Notification disabled
+            // showAdminNotification('Service completed successfully! ✓', 'success');
         }
     }
 }
@@ -101,7 +103,8 @@ function simulateNewServiceRequest() {
         const service = services[Math.floor(Math.random() * services.length)];
         const customer = customers[Math.floor(Math.random() * customers.length)];
 
-        showAdminNotification(`New request: ${service} - ${customer}`, 'info');
+        // Notification disabled
+        // showAdminNotification(`New request: ${service} - ${customer}`, 'info');
 
         // Update notification badge
         const badge = document.querySelector('.notification-badge');
@@ -129,7 +132,8 @@ function updateRouteProgress() {
             }
 
             if (newWidth === 100) {
-                showAdminNotification('Route completed! All stops visited.', 'success');
+                // Notification disabled
+                // showAdminNotification('Route completed! All stops visited.', 'success');
             }
         }
     });
@@ -162,7 +166,8 @@ function generateIoTAlert() {
 
     if (Math.random() > 0.6) {
         const alert = alerts[Math.floor(Math.random() * alerts.length)];
-        showAdminNotification(`${alert.icon} ${alert.title}: ${alert.message}`, alert.type);
+        // Notification disabled
+        // showAdminNotification(`${alert.icon} ${alert.title}: ${alert.message}`, alert.type);
     }
 }
 
@@ -366,7 +371,8 @@ function setupAdminInteractions() {
                 const alertCard = this.closest('.alert-card');
                 const title = alertCard.querySelector('h3').textContent;
 
-                showAdminNotification(`Service auto-scheduled: ${title}`, 'success');
+                // Notification disabled
+                // showAdminNotification(`Service auto-scheduled: ${title}`, 'success');
 
                 // Remove alert card after scheduling
                 setTimeout(() => {
@@ -387,12 +393,14 @@ function setupAdminInteractions() {
             const title = card.querySelector('h3').textContent;
 
             if (this.textContent === 'Apply') {
-                showAdminNotification(`Applied: ${title}`, 'success');
+                // Notification disabled
+                // showAdminNotification(`Applied: ${title}`, 'success');
                 this.textContent = 'Applied ✓';
                 this.disabled = true;
                 this.style.background = '#10b981';
             } else {
-                showAdminNotification(`Reviewing: ${title}`, 'info');
+                // Notification disabled
+                // showAdminNotification(`Reviewing: ${title}`, 'info');
             }
         });
     });
@@ -541,6 +549,165 @@ function showCustomerDetails(customerName) {
     `;
 
     document.body.appendChild(modal);
+}
+
+// ===== Dropdown Navigation Setup =====
+function setupDropdownNavigation() {
+    const navMenu = document.querySelector('.nav-menu');
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileOverlay = document.querySelector('.mobile-overlay');
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    const dropdownLinks = document.querySelectorAll('.dropdown-link');
+    const mainNavLinks = document.querySelectorAll('.nav-item:not(.nav-dropdown) .nav-link');
+
+    // Mobile menu toggle
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle('mobile-active');
+            mobileOverlay.classList.toggle('active');
+        });
+    }
+
+    // Close mobile menu when clicking overlay
+    if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', function() {
+            navMenu.classList.remove('mobile-active');
+            mobileOverlay.classList.remove('active');
+            // Close all dropdowns
+            document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        });
+    }
+
+    // Dropdown toggle functionality (for mobile click behavior)
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // On mobile, toggle the dropdown
+            if (window.innerWidth <= 1024) {
+                const dropdown = this.closest('.nav-dropdown');
+                const wasActive = dropdown.classList.contains('active');
+
+                // Close all dropdowns
+                document.querySelectorAll('.nav-dropdown').forEach(d => {
+                    d.classList.remove('active');
+                });
+
+                // Toggle current dropdown
+                if (!wasActive) {
+                    dropdown.classList.add('active');
+                }
+            }
+        });
+    });
+
+    // Handle dropdown link clicks - Navigate to page
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const pageName = this.dataset.page;
+            if (pageName) {
+                navigateToPage(pageName);
+
+                // Close mobile menu if open
+                navMenu.classList.remove('mobile-active');
+                mobileOverlay.classList.remove('active');
+
+                // Update active state for dropdown links
+                dropdownLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                // Log navigation
+                const pageNames = {
+                    'logistics': 'Logistics & Route Optimization',
+                    'scheduling': 'Scheduling & Calendar',
+                    'analytics': 'Analytics Dashboard',
+                    'customers': 'Customer Management',
+                    'loyalty-mgmt': 'Loyalty Program Management',
+                    'marketing': 'Marketing & Business Development',
+                    'sustainability-mgmt': 'Sustainability Opportunities'
+                };
+                console.log(`✓ Navigated to: ${pageNames[pageName] || pageName}`);
+            }
+        });
+    });
+
+    // Handle main nav link clicks (non-dropdown)
+    mainNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const pageName = this.dataset.page;
+            if (pageName) {
+                navigateToPage(pageName);
+
+                // Close mobile menu if open
+                navMenu.classList.remove('mobile-active');
+                mobileOverlay.classList.remove('active');
+
+                // Update active state for main nav
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                // Clear dropdown link active states
+                dropdownLinks.forEach(l => l.classList.remove('active'));
+
+                console.log(`✓ Navigated to: ${pageName}`);
+            }
+        });
+    });
+
+    // Close dropdowns when clicking outside (desktop only)
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth > 1024) {
+            if (!e.target.closest('.nav-dropdown')) {
+                document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        }
+    });
+
+    // Handle window resize - close mobile menu if resizing to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 1024) {
+            navMenu.classList.remove('mobile-active');
+            mobileOverlay.classList.remove('active');
+            document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
+}
+
+// Helper function to navigate between pages
+function navigateToPage(pageName) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.classList.remove('active');
+    });
+
+    // Show selected page
+    const selectedPage = document.getElementById(pageName);
+    if (selectedPage) {
+        selectedPage.classList.add('active');
+
+        // Scroll to top smoothly
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        return true;
+    } else {
+        console.error(`Page not found: ${pageName}`);
+        return false;
+    }
 }
 
 // ===== Export Functions =====

@@ -185,10 +185,10 @@ function addActionHandlers() {
 
 // ===== Real-time Updates Simulation =====
 function simulateRealTimeUpdates() {
-    // Simulate notification badge
-    setTimeout(() => {
-        showNotification('Plant health check completed - All systems green! 🌿', 'success');
-    }, 3000);
+    // Simulate notification badge - DISABLED
+    // setTimeout(() => {
+    //     showNotification('Plant health check completed - All systems green! 🌿', 'success');
+    // }, 3000);
 
     // Update stats periodically
     setInterval(updateLiveStats, 30000); // Update every 30 seconds
@@ -445,7 +445,8 @@ function openBookingModal(serviceName) {
     // Handle form submission
     modal.querySelector('form').addEventListener('submit', function(e) {
         e.preventDefault();
-        showNotification('Service booked successfully! Confirmation sent to your email.', 'success');
+        // Notification disabled
+        // showNotification('Service booked successfully! Confirmation sent to your email.', 'success');
         modal.remove();
     });
 
