@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidvest Living - Integrated Facility Solutions</title>
+    <link rel="stylesheet" href="onboarding-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="onboarding-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                    <path d="M20 8 L20 32 M8 20 L32 20" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="20" cy="20" r="4" fill="currentColor"/>
+                </svg>
+                <span class="logo-text">Bidvest Living</span>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-text" onclick="showLogin()">Already have an account? Sign In</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="onboarding-container">
+
+        <!-- Step 1: Welcome & Service Overview -->
+        <section id="step-welcome" class="onboarding-step active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">Integrated Facility Solutions<br/>That Elevate Your Business</h1>
+                    <p class="hero-subtitle">From landscaping to laundry, coffee to cleaning - we provide comprehensive facility management services tailored to your industry</p>
+                    <button class="btn-primary-large" onclick="nextStep('step-services')">Explore Our Services</button>
+
+                    <div class="hero-benefits">
+                        <div class="benefit-point">
+                            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>ISO 14001 Environmental Certified</span>
+                        </div>
+                        <div class="benefit-point">
+                            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>24/7 Customer Support</span>
+                        </div>
+                        <div class="benefit-point">
+                            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Save up to 20% with bundled services</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image-container">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
+                             alt="Modern office building with beautiful landscaping"
+                             class="hero-image">
+                        <div class="image-overlay-badge">
+                            <span class="badge-icon">⭐</span>
+                            <div class="badge-text">
+                                <div class="badge-title">4.9/5 Rating</div>
+                                <div class="badge-subtitle">From 500+ clients</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trust-section">
+                <p class="trust-label">Trusted by leading organizations across South Africa</p>
+                <div class="client-logos">
+                    <div class="client-logo-item">
+                        <div class="logo-placeholder">SUN INTERNATIONAL</div>
+                    </div>
+                    <div class="client-logo-item">
+                        <div class="logo-placeholder">NETCARE</div>
+                    </div>
+                    <div class="client-logo-item">
+                        <div class="logo-placeholder">RAND MERCHANT BANK</div>
+                    </div>
+                    <div class="client-logo-item">
+                        <div class="logo-placeholder">WITS UNIVERSITY</div>
+                    </div>
+                    <div class="client-logo-item">
+                        <div class="logo-placeholder">SANDTON CITY</div>
+                    </div>
+                </div>
+
+                <div class="trust-stats">
+                    <div class="trust-stat">
+                        <div class="trust-value">520+</div>
+                        <div class="trust-desc">Active Clients</div>
+                        <div class="trust-subtext">Across 9 provinces</div>
+                    </div>
+                    <div class="trust-stat">
+                        <div class="trust-value">24%</div>
+                        <div class="trust-desc">Avg. Carbon Reduction</div>
+                        <div class="trust-subtext">Since partnering with us</div>
+                    </div>
+                    <div class="trust-stat">
+                        <div class="trust-value">15 Years</div>
+                        <div class="trust-desc">Industry Experience</div>
+                        <div class="trust-subtext">Est. 2010</div>
+                    </div>
+                    <div class="trust-stat">
+                        <div class="trust-value">98%</div>
+                        <div class="trust-desc">Client Retention</div>
+                        <div class="trust-subtext">Year-over-year</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial Section -->
+            <div class="testimonial-section">
+                <h2 class="section-title-centered">What Our Clients Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"Bidvest Living transformed our hotel's outdoor spaces. Guest satisfaction scores for our grounds increased by 35% in the first quarter alone."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image" style="background: url('https://i.pravatar.cc/100?img=12') center/cover;"></div>
+                            <div class="author-info">
+                                <div class="author-name">Sarah Naidoo</div>
+                                <div class="author-title">General Manager, Luxury Coastal Resort</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"The sustainability reporting alone has been worth it. We've reduced our environmental footprint significantly and have the data to prove it to investors."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image" style="background: url('https://i.pravatar.cc/100?img=33') center/cover;"></div>
+                            <div class="author-info">
+                                <div class="author-name">James Botha</div>
+                                <div class="author-title">CFO, Corporate Office Park</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"Finally, one provider for all our facility needs. The bundled pricing saved us 18% compared to our previous multiple vendors."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image" style="background: url('https://i.pravatar.cc/100?img=47') center/cover;"></div>
+                            <div class="author-info">
+                                <div class="author-name">Thandi Mthembu</div>
+                                <div class="author-title">Facilities Director, Private Hospital Group</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Service Explanation -->
+        <section id="step-services" class="onboarding-step">
+            <div class="step-header">
+                <button class="btn-back" onclick="prevStep('step-welcome')">← Back</button>
+                <div class="step-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 33%;"></div>
+                    </div>
+                    <span class="progress-text">Step 1 of 3</span>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Our Comprehensive Service Portfolio</h2>
+                <p class="section-subtitle">We offer integrated solutions across six core service areas, designed to work seamlessly together for maximum efficiency and cost savings.</p>
+
+                <div class="services-grid-tiles">
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&q=80"
+                                 alt="Professional landscaping and garden maintenance"
+                                 class="service-image">
+                        </div>
+                        <div class="service-detail-header">
+                            <span class="service-icon-large">🌳</span>
+                            <h3>Landscaping & Grounds Maintenance</h3>
+                        </div>
+                        <p class="service-description">Professional landscaping design, installation, and maintenance services. We create beautiful, sustainable outdoor spaces that enhance your property's aesthetic appeal while reducing environmental impact.</p>
+                        <div class="service-features">
+                            <h4>What's Included:</h4>
+                            <ul>
+                                <li>Weekly grounds maintenance and mowing</li>
+                                <li>Seasonal planting and garden design</li>
+                                <li>Smart irrigation systems with water conservation</li>
+                                <li>Tree care and pruning services</li>
+                                <li>Pest control and soil management</li>
+                            </ul>
+                        </div>
+                        <div class="service-benefits">
+                            <span class="benefit-tag">💧 Water Efficient</span>
+                            <span class="benefit-tag">🌿 Eco-Friendly</span>
+                            <span class="benefit-tag">📊 Data-Driven</span>
+                        </div>
+                    </div>
+
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://images.unsplash.com/photo-1463320898484-cdee8141c787?w=800&q=80"
+                                 alt="Indoor plants and biophilic office design"
+                                 class="service-image">
+                        </div>
+                        <div class="service-detail-header">
+                            <span class="service-icon-large">🪴</span>
+                            <h3>Indoor Plant Solutions</h3>
+                        </div>
+                        <p class="service-description">Transform your indoor environment with biophilic design. Our plant specialists create healthier, more productive spaces through strategic placement of air-purifying plants.</p>
+                        <div class="service-features">
+                            <h4>What's Included:</h4>
+                            <ul>
+                                <li>Custom biophilic design consultation</li>
+                                <li>NASA-approved air-purifying plant selection</li>
+                                <li>Regular maintenance and health monitoring</li>
+                                <li>Plant replacement guarantee</li>
+                                <li>Seasonal rotation and updates</li>
+                            </ul>
+                        </div>
+                        <div class="service-benefits">
+                            <span class="benefit-tag">🫁 Air Quality</span>
+                            <span class="benefit-tag">😊 Wellness</span>
+                            <span class="benefit-tag">🎨 Design</span>
+                        </div>
+                    </div>
+
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=80"
+                                 alt="Premium coffee service and barista"
+                                 class="service-image">
+                        </div>
+                        <div class="service-detail-header">
+                            <span class="service-icon-large">☕</span>
+                            <h3>Coffee & Water Solutions</h3>
+                        </div>
+                        <p class="service-description">Premium coffee and water services that enhance your workplace experience. From single-origin beans to purified water systems, we ensure quality refreshments for your team and guests.</p>
+                        <div class="service-features">
+                            <h4>What's Included:</h4>
+                            <ul>
+                                <li>Premium coffee bean selection (sustainable sources)</li>
+                                <li>Commercial-grade equipment installation</li>
+                                <li>Water filtration and purification systems</li>
+                                <li>Auto-replenishment inventory management</li>
+                                <li>Barista training for your staff</li>
+                            </ul>
+                        </div>
+                        <div class="service-benefits">
+                            <span class="benefit-tag">☕ Premium Quality</span>
+                            <span class="benefit-tag">♻️ Sustainable</span>
+                            <span class="benefit-tag">📦 Auto-Refill</span>
+                        </div>
+                    </div>
+
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=80"
+                                 alt="Luxury hotel amenities and branded toiletries"
+                                 class="service-image">
+                        </div>
+                        <div class="service-detail-header">
+                            <span class="service-icon-large">🧴</span>
+                            <h3>Custom Amenities & Supplies</h3>
+                        </div>
+                        <p class="service-description">Branded amenities and facility supplies tailored to your business. Perfect for hospitality, healthcare, and corporate environments seeking to enhance their brand experience.</p>
+                        <div class="service-features">
+                            <h4>What's Included:</h4>
+                            <ul>
+                                <li>Custom branded packaging design</li>
+                                <li>Eco-friendly product formulations</li>
+                                <li>Toiletries, soaps, and personal care items</li>
+                                <li>Cleaning and sanitation supplies</li>
+                                <li>Scheduled delivery and inventory management</li>
+                            </ul>
+                        </div>
+                        <div class="service-benefits">
+                            <span class="benefit-tag">🎨 Custom Branding</span>
+                            <span class="benefit-tag">🌱 Eco-Packaging</span>
+                            <span class="benefit-tag">🏷️ White Label</span>
+                        </div>
+                    </div>
+
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=800&q=80"
+                                 alt="Commercial laundry and linen services"
+                                 class="service-image">
+                        </div>
+                        <div class="service-detail-header">
+                            <span class="service-icon-large">🧺</span>
+                            <h3>Commercial Laundry Services</h3>
+                        </div>
+                        <p class="service-description">Professional laundry solutions for linens, uniforms, and textiles. Using eco-friendly processes and efficient logistics to keep your operations running smoothly.</p>
+                        <div class="service-features">
+                            <h4>What's Included:</h4>
+                            <ul>
+                                <li>Scheduled pickup and delivery service</li>
+                                <li>Eco-friendly washing and sanitization</li>
+                                <li>Linen rental programs available</li>
+                                <li>RFID tracking for inventory control</li>
+                                <li>Emergency same-day service options</li>
+                            </ul>
+                        </div>
+                        <div class="service-benefits">
+                            <span class="benefit-tag">♻️ Green Process</span>
+                            <span class="benefit-tag">📍 RFID Tracking</span>
+                            <span class="benefit-tag">⚡ Fast Turnaround</span>
+                        </div>
+                    </div>
+
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80"
+                                 alt="Professional uniforms and corporate attire"
+                                 class="service-image">
+                        </div>
+                        <div class="service-detail-header">
+                            <span class="service-icon-large">👔</span>
+                            <h3>Garment Rental & Management</h3>
+                        </div>
+                        <p class="service-description">Complete uniform and garment rental solutions. From corporate attire to specialized workwear, we handle procurement, maintenance, and rotation.</p>
+                        <div class="service-features">
+                            <h4>What's Included:</h4>
+                            <ul>
+                                <li>Custom uniform design and sizing</li>
+                                <li>Garment procurement and inventory</li>
+                                <li>Regular cleaning and maintenance</li>
+                                <li>Size replacement and alterations</li>
+                                <li>Sustainable fabric options</li>
+                            </ul>
+                        </div>
+                        <div class="service-benefits">
+                            <span class="benefit-tag">👔 Professional</span>
+                            <span class="benefit-tag">🔄 Rotation Service</span>
+                            <span class="benefit-tag">💼 Managed</span>
+                        </div>
+                    </div>
+                </div> <!-- End services-grid-tiles -->
+
+                <!-- Success Stories Section -->
+                <div class="success-stories-section">
+                    <h2 class="section-title">Real Results from Real Clients</h2>
+                    <div class="success-stories-grid">
+                        <div class="success-story-card">
+                            <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80');"></div>
+                            <div class="story-content">
+                                <div class="story-badge">Hospitality Case Study</div>
+                                <h3>Cape Town Luxury Resort</h3>
+                                <p class="story-challenge"><strong>Challenge:</strong> Reduce operational costs while improving guest experience</p>
+                                <div class="story-results">
+                                    <div class="result-metric">
+                                        <div class="metric-value">35%</div>
+                                        <div class="metric-label">Guest Satisfaction Increase</div>
+                                    </div>
+                                    <div class="result-metric">
+                                        <div class="metric-value">R145k</div>
+                                        <div class="metric-label">Annual Savings</div>
+                                    </div>
+                                    <div class="result-metric">
+                                        <div class="metric-value">28%</div>
+                                        <div class="metric-label">Carbon Reduction</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="success-story-card">
+                            <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80');"></div>
+                            <div class="story-content">
+                                <div class="story-badge">Healthcare Case Study</div>
+                                <h3>Johannesburg Medical Center</h3>
+                                <p class="story-challenge"><strong>Challenge:</strong> Meet strict hygiene standards while reducing waste</p>
+                                <div class="story-results">
+                                    <div class="result-metric">
+                                        <div class="metric-value">100%</div>
+                                        <div class="metric-label">Compliance Score</div>
+                                    </div>
+                                    <div class="result-metric">
+                                        <div class="metric-value">82%</div>
+                                        <div class="metric-label">Waste Reduction</div>
+                                    </div>
+                                    <div class="result-metric">
+                                        <div class="metric-value">R220k</div>
+                                        <div class="metric-label">Cost Savings</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="success-story-card">
+                            <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80');"></div>
+                            <div class="story-content">
+                                <div class="story-badge">Corporate Case Study</div>
+                                <h3>Sandton Business Park</h3>
+                                <p class="story-challenge"><strong>Challenge:</strong> Create healthier workspace while achieving ESG goals</p>
+                                <div class="story-results">
+                                    <div class="result-metric">
+                                        <div class="metric-value">42%</div>
+                                        <div class="metric-label">Employee Wellness Score</div>
+                                    </div>
+                                    <div class="result-metric">
+                                        <div class="metric-value">15%</div>
+                                        <div class="metric-label">Productivity Gain</div>
+                                    </div>
+                                    <div class="result-metric">
+                                        <div class="metric-value">Net Zero</div>
+                                        <div class="metric-label">Carbon Status</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Ready to build your custom solution?</h3>
+                    <p>Tell us about your industry and we'll recommend the perfect service package</p>
+                    <button class="btn-primary-large" onclick="nextStep('step-industry')">Select Your Industry →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: Industry Selection -->
+        <section id="step-industry" class="onboarding-step">
+            <div class="step-header">
+                <button class="btn-back" onclick="prevStep('step-services')">← Back</button>
+                <div class="step-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 66%;"></div>
+                    </div>
+                    <span class="progress-text">Step 2 of 3</span>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">What industry are you in?</h2>
+                <p class="section-subtitle">We'll recommend service packages tailored to your specific needs and compliance requirements.</p>
+
+                <div class="industry-grid">
+                    <div class="industry-card" onclick="selectIndustry('hospitality')">
+                        <div class="industry-image-bg" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80');"></div>
+                        <div class="industry-content">
+                            <div class="industry-icon">🏨</div>
+                            <h3>Hospitality & Tourism</h3>
+                            <p>Hotels, resorts, lodges, restaurants</p>
+                            <div class="industry-clients">520+ clients nationwide</div>
+                        </div>
+                    </div>
+
+                    <div class="industry-card" onclick="selectIndustry('healthcare')">
+                        <div class="industry-image-bg" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80');"></div>
+                        <div class="industry-content">
+                            <div class="industry-icon">🏥</div>
+                            <h3>Healthcare</h3>
+                            <p>Hospitals, clinics, medical facilities</p>
+                            <div class="industry-clients">210+ healthcare clients</div>
+                        </div>
+                    </div>
+
+                    <div class="industry-card" onclick="selectIndustry('corporate')">
+                        <div class="industry-image-bg" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80');"></div>
+                        <div class="industry-content">
+                            <div class="industry-icon">🏢</div>
+                            <h3>Corporate Offices</h3>
+                            <p>Office buildings, business parks</p>
+                            <div class="industry-clients">365+ corporate clients</div>
+                        </div>
+                    </div>
+
+                    <div class="industry-card" onclick="selectIndustry('education')">
+                        <div class="industry-image-bg" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80');"></div>
+                        <div class="industry-content">
+                            <div class="industry-icon">🎓</div>
+                            <h3>Education</h3>
+                            <p>Schools, universities, training centers</p>
+                            <div class="industry-clients">155+ institutions</div>
+                        </div>
+                    </div>
+
+                    <div class="industry-card" onclick="selectIndustry('retail')">
+                        <div class="industry-image-bg" style="background-image: url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&q=80');"></div>
+                        <div class="industry-content">
+                            <div class="industry-icon">🛍️</div>
+                            <h3>Retail & Shopping</h3>
+                            <p>Malls, stores, retail outlets</p>
+                            <div class="industry-clients">185+ retail locations</div>
+                        </div>
+                    </div>
+
+                    <div class="industry-card" onclick="selectIndustry('industrial')">
+                        <div class="industry-image-bg" style="background-image: url('https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80');"></div>
+                        <div class="industry-content">
+                            <div class="industry-icon">🏭</div>
+                            <h3>Industrial & Manufacturing</h3>
+                            <p>Factories, warehouses, production facilities</p>
+                            <div class="industry-clients">125+ facilities</div>
+                        </div>
+                    </div>
+
+                    <div class="industry-card" onclick="selectIndustry('residential')">
+                        <div class="industry-image-bg" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80');"></div>
+                        <div class="industry-content">
+                            <div class="industry-icon">🏘️</div>
+                            <h3>Residential Estates</h3>
+                            <p>Apartment complexes, gated communities</p>
+                            <div class="industry-clients">260+ communities</div>
+                        </div>
+                    </div>
+
+                    <div class="industry-card" onclick="selectIndustry('other')">
+                        <div class="industry-image-bg" style="background-image: url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=600&q=80');"></div>
+                        <div class="industry-content">
+                            <div class="industry-icon">🏛️</div>
+                            <h3>Other</h3>
+                            <p>Government, non-profit, mixed-use</p>
+                            <div class="industry-clients">Custom solutions available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4: Service Recommendations & Customization -->
+        <section id="step-recommendations" class="onboarding-step">
+            <div class="step-header">
+                <button class="btn-back" onclick="prevStep('step-industry')">← Back</button>
+                <div class="step-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <span class="progress-text">Step 3 of 3</span>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="recommendation-header">
+                    <div class="industry-badge" id="selected-industry-badge">
+                        <span class="badge-icon">🏨</span>
+                        <span class="badge-text">Hospitality & Tourism</span>
+                    </div>
+                    <h2 class="section-title">Recommended Service Package</h2>
+                    <p class="section-subtitle">Based on industry best practices and what similar businesses use</p>
+                </div>
+
+                <div class="package-container">
+                    <div class="recommended-package">
+                        <div class="package-header">
+                            <h3>Complete Hospitality Package</h3>
+                            <div class="package-savings">
+                                <span class="savings-badge">Save 15%</span>
+                                <span class="savings-text">with bundled services</span>
+                            </div>
+                        </div>
+
+                        <div class="package-services" id="recommended-services">
+                            <!-- Services will be populated by JavaScript based on industry -->
+                        </div>
+
+                        <div class="package-pricing">
+                            <div class="pricing-estimate">
+                                <span class="pricing-label">Estimated Starting From:</span>
+                                <span class="pricing-value" id="package-price">R8,500/month</span>
+                            </div>
+                            <p class="pricing-note">Final pricing based on facility size and service frequency</p>
+                        </div>
+                    </div>
+
+                    <div class="customization-section">
+                        <h3>Customize Your Package</h3>
+                        <p>Add or remove services to match your exact needs</p>
+
+                        <div class="service-toggles" id="service-toggles">
+                            <!-- Service toggles will be populated by JavaScript -->
+                        </div>
+
+                        <div class="summary-box">
+                            <div class="summary-row">
+                                <span>Selected Services:</span>
+                                <span id="service-count">6 services</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Your Discount:</span>
+                                <span id="discount-tier">15% (Gold Tier)</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Estimated Total:</span>
+                                <span id="total-estimate">R8,500/month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <button class="btn-primary-large" onclick="nextStep('step-register')">Continue to Registration →</button>
+                    <p class="cta-note">No credit card required. Get a personalized quote after registration.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 5: Registration Form -->
+        <section id="step-register" class="onboarding-step">
+            <div class="step-header">
+                <button class="btn-back" onclick="prevStep('step-recommendations')">← Back</button>
+            </div>
+
+            <div class="content-section narrow">
+                <div class="register-header">
+                    <h2 class="section-title">Create Your Account</h2>
+                    <p class="section-subtitle">Join 500+ businesses transforming their facility management</p>
+                </div>
+
+                <form class="register-form" onsubmit="handleRegistration(event)">
+                    <div class="form-section">
+                        <h3 class="form-section-title">Business Information</h3>
+
+                        <div class="form-group">
+                            <label for="business-name">Business/Organization Name *</label>
+                            <input type="text" id="business-name" name="businessName" required placeholder="e.g., Luxury Resort Group">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="industry">Industry *</label>
+                                <select id="industry" name="industry" required>
+                                    <option value="">Select industry</option>
+                                    <option value="hospitality">Hospitality & Tourism</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="corporate">Corporate Offices</option>
+                                    <option value="education">Education</option>
+                                    <option value="retail">Retail & Shopping</option>
+                                    <option value="industrial">Industrial & Manufacturing</option>
+                                    <option value="residential">Residential Estates</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="facility-size">Facility Size *</label>
+                                <select id="facility-size" name="facilitySize" required>
+                                    <option value="">Select size</option>
+                                    <option value="small">Small (< 5,000 sqm)</option>
+                                    <option value="medium">Medium (5,000 - 20,000 sqm)</option>
+                                    <option value="large">Large (20,000 - 50,000 sqm)</option>
+                                    <option value="enterprise">Enterprise (> 50,000 sqm)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Business Address *</label>
+                            <input type="text" id="address" name="address" required placeholder="Street address">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required placeholder="City">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="province">Province *</label>
+                                <select id="province" name="province" required>
+                                    <option value="">Select province</option>
+                                    <option value="gauteng">Gauteng</option>
+                                    <option value="western-cape">Western Cape</option>
+                                    <option value="kwazulu-natal">KwaZulu-Natal</option>
+                                    <option value="eastern-cape">Eastern Cape</option>
+                                    <option value="free-state">Free State</option>
+                                    <option value="limpopo">Limpopo</option>
+                                    <option value="mpumalanga">Mpumalanga</option>
+                                    <option value="northern-cape">Northern Cape</option>
+                                    <option value="north-west">North West</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Contact Person</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name *</label>
+                                <input type="text" id="first-name" name="firstName" required placeholder="First name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="last-name">Last Name *</label>
+                                <input type="text" id="last-name" name="lastName" required placeholder="Last name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="job-title">Job Title *</label>
+                            <input type="text" id="job-title" name="jobTitle" required placeholder="e.g., Facilities Manager">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Business Email *</label>
+                                <input type="email" id="email" name="email" required placeholder="you@company.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+27 XX XXX XXXX">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Account Security</h3>
+
+                        <div class="form-group">
+                            <label for="password">Password *</label>
+                            <input type="password" id="password" name="password" required placeholder="Minimum 8 characters">
+                            <small class="form-hint">Must include uppercase, lowercase, number, and special character</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password *</label>
+                            <input type="password" id="confirm-password" name="confirmPassword" required placeholder="Re-enter password">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">
+                                I agree to the <a href="#" class="link">Terms of Service</a> and <a href="#" class="link">Privacy Policy</a> *
+                            </label>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="marketing" name="marketing">
+                            <label for="marketing">
+                                Send me updates about new services, sustainability initiatives, and exclusive offers
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary-large">Create Account & Get Quote</button>
+                    </div>
+
+                    <p class="form-footer">
+                        Already have an account? <a href="#" class="link" onclick="showLogin(); return false;">Sign in here</a>
+                    </p>
+                </form>
+
+                <div class="registration-benefits">
+                    <h4>What happens next?</h4>
+                    <div class="benefit-steps">
+                        <div class="benefit-step">
+                            <span class="step-number">1</span>
+                            <p>Account activation email sent immediately</p>
+                        </div>
+                        <div class="benefit-step">
+                            <span class="step-number">2</span>
+                            <p>Our team reviews your service selection</p>
+                        </div>
+                        <div class="benefit-step">
+                            <span class="step-number">3</span>
+                            <p>Receive detailed quote within 24 hours</p>
+                        </div>
+                        <div class="benefit-step">
+                            <span class="step-number">4</span>
+                            <p>Schedule consultation with your account manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Modal -->
+        <div id="login-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-content">
+                <button class="modal-close" onclick="hideLogin()">×</button>
+
+                <div class="login-container">
+                    <div class="login-header">
+                        <h2>Welcome Back</h2>
+                        <p>Sign in to access your facility management dashboard</p>
+                    </div>
+
+                    <form class="login-form" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" name="email" required placeholder="you@company.com" autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" name="password" required placeholder="Enter your password" autocomplete="current-password">
+                        </div>
+
+                        <div class="form-options">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="#" class="link">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="btn-primary-large">Sign In</button>
+                    </form>
+
+                    <div class="login-footer">
+                        <p>Don't have an account? <a href="#" class="link" onclick="hideLogin(); return false;">Get started</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="onboarding-script.js"></script>
+</body>
+</html>
