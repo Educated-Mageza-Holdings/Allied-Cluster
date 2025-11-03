@@ -536,6 +536,34 @@ function updatePricing() {
     const checkboxes = document.querySelectorAll('.service-checkbox input[type="checkbox"]:checked');
     let selectedCount = checkboxes.length;
 
+    // Service name mapping
+    const serviceNames = {
+        'landscaping': { name: 'Landscaping & Grounds', icon: '🌳' },
+        'plants': { name: 'Indoor Plants', icon: '🪴' },
+        'coffee': { name: 'Coffee & Water', icon: '☕' },
+        'amenities': { name: 'Custom Amenities', icon: '🧴' },
+        'laundry': { name: 'Commercial Laundry', icon: '🧺' },
+        'garments': { name: 'Garment Rental', icon: '👔' }
+    };
+
+    // Update selected services list
+    const selectedServicesContainer = document.getElementById('selected-services-items');
+    if (selectedCount > 0) {
+        const selectedServices = Array.from(checkboxes).map(checkbox => {
+            const serviceValue = checkbox.value;
+            const service = serviceNames[serviceValue];
+            return `
+                <div class="service-tag">
+                    <span class="service-tag-icon">${service.icon}</span>
+                    <span class="service-tag-name">${service.name}</span>
+                </div>
+            `;
+        }).join('');
+        selectedServicesContainer.innerHTML = selectedServices;
+    } else {
+        selectedServicesContainer.innerHTML = '<p class="no-services">No services selected yet</p>';
+    }
+
     // Calculate tier
     let tierName = '-';
     let savingsLevel = 'Standard';
