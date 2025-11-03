@@ -11,11 +11,7 @@
     <nav class="onboarding-nav">
         <div class="nav-container">
             <div class="nav-brand">
-                <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
-                    <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
-                    <path d="M20 8 L20 32 M8 20 L32 20" stroke="currentColor" stroke-width="2"/>
-                    <circle cx="20" cy="20" r="4" fill="currentColor"/>
-                </svg>
+                <img src="logo.jpg" alt="Bidvest Living Logo" class="logo-image">
                 <span class="logo-text">Bidvest Living</span>
             </div>
             <div class="nav-actions">
@@ -56,17 +52,51 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="hero-image-container">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
-                             alt="Modern office building with beautiful landscaping"
-                             class="hero-image">
-                        <div class="image-overlay-badge">
-                            <span class="badge-icon">⭐</span>
-                            <div class="badge-text">
-                                <div class="badge-title">4.9/5 Rating</div>
-                                <div class="badge-subtitle">From 500+ clients</div>
+            </div>
+
+            <!-- Video Overview Section -->
+            <div class="video-overview-section">
+                <div class="video-container-wrapper">
+                    <div class="video-text-content">
+                        <span class="video-label">Watch Our Story</span>
+                        <h2 class="video-title">Transforming Spaces,<br/>Elevating Experiences</h2>
+                        <p class="video-description">
+                            Discover how Bidvest Living is revolutionizing facility management across South Africa.
+                            From sustainable landscaping to comprehensive service solutions, we're committed to
+                            creating environments where businesses and people thrive.
+                        </p>
+                        <div class="video-highlights">
+                            <div class="video-highlight-item">
+                                <div class="highlight-number">15+</div>
+                                <div class="highlight-label">Years of Excellence</div>
                             </div>
+                            <div class="video-highlight-item">
+                                <div class="highlight-number">520+</div>
+                                <div class="highlight-label">Satisfied Clients</div>
+                            </div>
+                            <div class="video-highlight-item">
+                                <div class="highlight-number">6</div>
+                                <div class="highlight-label">Core Services</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-player-container">
+                        <div class="video-wrapper">
+                            <!-- Replace the src URL with your actual Bidvest Living video -->
+                            <iframe
+                                class="video-iframe"
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+                                title="Bidvest Living - Integrated Facility Solutions"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="video-decorative-badge">
+                            <svg viewBox="0 0 24 24" fill="none" class="play-icon">
+                                <circle cx="12" cy="12" r="10" fill="#10b981"/>
+                                <path d="M10 8l6 4-6 4V8z" fill="white"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -76,19 +106,56 @@
                 <p class="trust-label">Trusted by leading organizations across South Africa</p>
                 <div class="client-logos">
                     <div class="client-logo-item">
-                        <div class="logo-placeholder">SUN INTERNATIONAL</div>
+                        <img src="images/logos/sun-international.png"
+                             alt="Sun International"
+                             class="client-logo-img"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                        <svg class="client-logo-svg fallback-logo" style="display:none;" viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="10" width="30" height="30" rx="4" fill="#F59E0B"/>
+                            <text x="45" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151">SUN INTERNATIONAL</text>
+                        </svg>
                     </div>
                     <div class="client-logo-item">
-                        <div class="logo-placeholder">NETCARE</div>
+                        <img src="images/logos/netcare.png"
+                             alt="Netcare"
+                             class="client-logo-img"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                        <svg class="client-logo-svg fallback-logo" style="display:none;" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="25" r="12" fill="#DC2626"/>
+                            <path d="M20 15 L25 25 L20 35 L15 25 Z" fill="white"/>
+                            <text x="42" y="32" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#374151">NETCARE</text>
+                        </svg>
                     </div>
                     <div class="client-logo-item">
-                        <div class="logo-placeholder">RAND MERCHANT BANK</div>
+                        <img src="images/logos/rmb.png"
+                             alt="Rand Merchant Bank"
+                             class="client-logo-img"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                        <svg class="client-logo-svg fallback-logo" style="display:none;" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="15" width="20" height="20" fill="#1E40AF"/>
+                            <rect x="28" y="15" width="20" height="20" fill="#3B82F6"/>
+                            <text x="55" y="32" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#374151">RAND MERCHANT BANK</text>
+                        </svg>
                     </div>
                     <div class="client-logo-item">
-                        <div class="logo-placeholder">WITS UNIVERSITY</div>
+                        <img src="images/logos/wits.png"
+                             alt="Wits University"
+                             class="client-logo-img"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                        <svg class="client-logo-svg fallback-logo" style="display:none;" viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="20,10 30,25 20,40 10,25" fill="#7C3AED"/>
+                            <text x="40" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151">WITS UNIVERSITY</text>
+                        </svg>
                     </div>
                     <div class="client-logo-item">
-                        <div class="logo-placeholder">SANDTON CITY</div>
+                        <img src="images/logos/sandton-city.png"
+                             alt="Sandton City"
+                             class="client-logo-img"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                        <svg class="client-logo-svg fallback-logo" style="display:none;" viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="12" width="26" height="26" rx="13" fill="#10B981"/>
+                            <text x="40" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151">SANDTON CITY</text>
+                        </svg>
                     </div>
                 </div>
 
@@ -361,12 +428,12 @@
                                         <div class="metric-label">Guest Satisfaction Increase</div>
                                     </div>
                                     <div class="result-metric">
-                                        <div class="metric-value">R145k</div>
-                                        <div class="metric-label">Annual Savings</div>
-                                    </div>
-                                    <div class="result-metric">
                                         <div class="metric-value">28%</div>
                                         <div class="metric-label">Carbon Reduction</div>
+                                    </div>
+                                    <div class="result-metric">
+                                        <div class="metric-value">98%</div>
+                                        <div class="metric-label">On-Time Service</div>
                                     </div>
                                 </div>
                             </div>
@@ -388,8 +455,8 @@
                                         <div class="metric-label">Waste Reduction</div>
                                     </div>
                                     <div class="result-metric">
-                                        <div class="metric-value">R220k</div>
-                                        <div class="metric-label">Cost Savings</div>
+                                        <div class="metric-value">45%</div>
+                                        <div class="metric-label">Efficiency Gain</div>
                                     </div>
                                 </div>
                             </div>
@@ -563,14 +630,6 @@
                         <div class="package-services" id="recommended-services">
                             <!-- Services will be populated by JavaScript based on industry -->
                         </div>
-
-                        <div class="package-pricing">
-                            <div class="pricing-estimate">
-                                <span class="pricing-label">Estimated Starting From:</span>
-                                <span class="pricing-value" id="package-price">R8,500/month</span>
-                            </div>
-                            <p class="pricing-note">Final pricing based on facility size and service frequency</p>
-                        </div>
                     </div>
 
                     <div class="customization-section">
@@ -590,17 +649,13 @@
                                 <span>Your Discount:</span>
                                 <span id="discount-tier">15% (Gold Tier)</span>
                             </div>
-                            <div class="summary-row total">
-                                <span>Estimated Total:</span>
-                                <span id="total-estimate">R8,500/month</span>
-                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="cta-section">
                     <button class="btn-primary-large" onclick="nextStep('step-register')">Continue to Registration →</button>
-                    <p class="cta-note">No credit card required. Get a personalized quote after registration.</p>
+                    <p class="cta-note">No credit card required. Get started with your customized service package.</p>
                 </div>
             </div>
         </section>
@@ -748,7 +803,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <button type="submit" class="btn-primary-large">Create Account & Get Quote</button>
+                        <button type="submit" class="btn-primary-large">Create Account & Get Started</button>
                     </div>
 
                     <p class="form-footer">
@@ -769,7 +824,7 @@
                         </div>
                         <div class="benefit-step">
                             <span class="step-number">3</span>
-                            <p>Receive detailed quote within 24 hours</p>
+                            <p>Receive your service plan within 24 hours</p>
                         </div>
                         <div class="benefit-step">
                             <span class="step-number">4</span>

@@ -566,12 +566,14 @@ function updatePricing() {
 
     // Calculate tier
     let tierName = '-';
+    let tierClass = '';
     let savingsLevel = 'Standard';
     let benefits = [];
 
     if (selectedCount >= 6) {
         tierName = 'Platinum Partner';
-        savingsLevel = 'Maximum Savings (20%)';
+        tierClass = 'platinum';
+        savingsLevel = 'Maximum Benefits';
         benefits = [
             '✓ Priority scheduling across all services',
             '✓ Dedicated account manager',
@@ -584,7 +586,8 @@ function updatePricing() {
         ];
     } else if (selectedCount >= 4) {
         tierName = 'Gold Partner';
-        savingsLevel = 'Premium Savings (15%)';
+        tierClass = 'gold';
+        savingsLevel = 'Premium Benefits';
         benefits = [
             '✓ Priority scheduling',
             '✓ Dedicated account manager',
@@ -595,7 +598,8 @@ function updatePricing() {
         ];
     } else if (selectedCount >= 2) {
         tierName = 'Silver Partner';
-        savingsLevel = 'Enhanced Savings (10%)';
+        tierClass = 'silver';
+        savingsLevel = 'Enhanced Benefits';
         benefits = [
             '✓ Coordinated scheduling',
             '✓ Single point of contact',
@@ -605,7 +609,8 @@ function updatePricing() {
         ];
     } else if (selectedCount === 1) {
         tierName = 'Bronze Partner';
-        savingsLevel = 'Standard Savings (5%)';
+        tierClass = 'bronze';
+        savingsLevel = 'Entry Level';
         benefits = [
             '✓ Standard scheduling',
             '✓ Customer support',
@@ -631,6 +636,37 @@ function updatePricing() {
     setTimeout(() => {
         resultCard.style.transform = 'scale(1)';
     }, 200);
+
+    // Highlight matching tier in pricing section
+    highlightMatchingTier(tierClass);
+}
+
+function highlightMatchingTier(tierClass) {
+    // Remove all previous highlights
+    const allTiers = document.querySelectorAll('.pricing-tier');
+    allTiers.forEach(tier => {
+        tier.classList.remove('tier-active');
+        tier.style.transform = '';
+        tier.style.boxShadow = '';
+    });
+
+    if (!tierClass) return;
+
+    // Find and highlight the matching tier
+    const tierHeaders = document.querySelectorAll('.tier-header');
+    tierHeaders.forEach(header => {
+        if (header.classList.contains(tierClass)) {
+            const tierCard = header.closest('.pricing-tier');
+            tierCard.classList.add('tier-active');
+            tierCard.style.transform = 'scale(1.05)';
+            tierCard.style.boxShadow = '0 20px 40px rgba(16, 185, 129, 0.3)';
+
+            // Scroll tier into view (smooth)
+            setTimeout(() => {
+                tierCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 300);
+        }
+    });
 }
 
 // Initialize calculator
