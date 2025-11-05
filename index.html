@@ -20,6 +20,7 @@
                 <li><a href="#" class="nav-link" data-page="loyalty">Loyalty Rewards</a></li>
                 <li><a href="#" class="nav-link" data-page="sustainability">Sustainability</a></li>
                 <li><a href="#" class="nav-link" data-page="billing">Billing</a></li>
+                <li><a href="#" class="nav-link" data-page="documents">Documents</a></li>
             </ul>
             <div class="nav-user">
                 <span class="user-name">Luxury Resort Group</span>
@@ -238,8 +239,10 @@
                     <div class="service-card">
                         <div class="service-card-header">
                             <span class="service-card-icon">🌳</span>
-                            <h3>Landscaping</h3>
-                            <span class="status-badge status-active">Active</span>
+                            <div class="service-card-title-wrapper">
+                                <h3>Landscaping</h3>
+                                <span class="status-badge status-active">Active</span>
+                            </div>
                         </div>
                         <p class="service-description">Professional landscaping design and maintenance for your property</p>
                         <div class="service-stats">
@@ -261,8 +264,10 @@
                     <div class="service-card">
                         <div class="service-card-header">
                             <span class="service-card-icon">🪴</span>
-                            <h3>Indoor Plants</h3>
-                            <span class="status-badge status-active">Active</span>
+                            <div class="service-card-title-wrapper">
+                                <h3>Indoor Plants</h3>
+                                <span class="status-badge status-active">Active</span>
+                            </div>
                         </div>
                         <p class="service-description">Biophilic design and maintenance for healthier indoor environments</p>
                         <div class="service-stats">
@@ -288,8 +293,10 @@
                     <div class="service-card">
                         <div class="service-card-header">
                             <span class="service-card-icon">☕</span>
-                            <h3>Coffee & Water</h3>
-                            <span class="status-badge status-active">Active</span>
+                            <div class="service-card-title-wrapper">
+                                <h3>Coffee & Water</h3>
+                                <span class="status-badge status-active">Active</span>
+                            </div>
                         </div>
                         <p class="service-description">Premium coffee and water solutions with sustainability focus</p>
                         <div class="service-stats">
@@ -311,8 +318,10 @@
                     <div class="service-card">
                         <div class="service-card-header">
                             <span class="service-card-icon">🧴</span>
-                            <h3>Hotel Amenities</h3>
-                            <span class="status-badge status-active">Active</span>
+                            <div class="service-card-title-wrapper">
+                                <h3>Hotel Amenities</h3>
+                                <span class="status-badge status-active">Active</span>
+                            </div>
                         </div>
                         <p class="service-description">Custom branded amenities with eco-friendly packaging</p>
                         <div class="service-stats">
@@ -334,8 +343,10 @@
                     <div class="service-card">
                         <div class="service-card-header">
                             <span class="service-card-icon">🧺</span>
-                            <h3>Laundry Service</h3>
-                            <span class="status-badge status-active">Active</span>
+                            <div class="service-card-title-wrapper">
+                                <h3>Laundry Service</h3>
+                                <span class="status-badge status-active">Active</span>
+                            </div>
                         </div>
                         <p class="service-description">Commercial laundry with eco-friendly cleaning processes</p>
                         <div class="service-stats">
@@ -357,8 +368,10 @@
                     <div class="service-card">
                         <div class="service-card-header">
                             <span class="service-card-icon">👔</span>
-                            <h3>Garment Rental</h3>
-                            <span class="status-badge status-active">Active</span>
+                            <div class="service-card-title-wrapper">
+                                <h3>Garment Rental</h3>
+                                <span class="status-badge status-active">Active</span>
+                            </div>
                         </div>
                         <p class="service-description">Uniform and event garment rental with maintenance</p>
                         <div class="service-stats">
@@ -1099,6 +1112,236 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- Documents Page -->
+        <div id="documents" class="page">
+            <section class="page-header">
+                <h1>Onboarding Documents</h1>
+                <p>Upload and manage your compliance and certification documents</p>
+            </section>
+
+            <!-- Document Upload Summary -->
+            <section class="section">
+                <div class="document-summary">
+                    <div class="document-stat-card">
+                        <div class="stat-icon">📄</div>
+                        <div class="stat-info">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Total Documents</div>
+                        </div>
+                    </div>
+                    <div class="document-stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Valid Certificates</div>
+                        </div>
+                    </div>
+                    <div class="document-stat-card warning">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-info">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Expiring Soon</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BEE Certificates Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>BEE Certificates</h2>
+                    <p class="section-subtitle">Upload your B-BBEE verification certificates</p>
+                </div>
+
+                <div class="upload-container">
+                    <div class="upload-area">
+                        <input type="file" id="bee-cert-upload" accept=".pdf,.jpg,.jpeg,.png" multiple hidden>
+                        <label for="bee-cert-upload" class="upload-label">
+                            <div class="upload-icon">📤</div>
+                            <h3>Upload BEE Certificate</h3>
+                            <p>Click to browse or drag and drop files here</p>
+                            <span class="upload-hint">Supported formats: PDF, JPG, PNG (Max 10MB)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Uploaded BEE Documents List -->
+                <div class="document-list">
+                    <div class="document-item">
+                        <div class="document-icon">📄</div>
+                        <div class="document-info">
+                            <h4>BEE Level 4 Certificate</h4>
+                            <p>Uploaded: Jan 15, 2025 | Valid until: Jan 15, 2026</p>
+                        </div>
+                        <div class="document-status">
+                            <span class="status-badge status-active">Valid</span>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn-link">View</button>
+                            <button class="btn-link">Download</button>
+                            <button class="btn-link delete">Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="document-item">
+                        <div class="document-icon">📄</div>
+                        <div class="document-info">
+                            <h4>BBBEE Verification Certificate 2024</h4>
+                            <p>Uploaded: Dec 10, 2024 | Valid until: Dec 10, 2025</p>
+                        </div>
+                        <div class="document-status">
+                            <span class="status-badge status-expiring">Expiring in 35 days</span>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn-link">View</button>
+                            <button class="btn-link">Download</button>
+                            <button class="btn-link delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expiring Certificates Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Certificates with Expiry Dates</h2>
+                    <p class="section-subtitle">Track and manage time-sensitive certifications</p>
+                </div>
+
+                <div class="upload-container">
+                    <div class="upload-area">
+                        <input type="file" id="cert-upload" accept=".pdf,.jpg,.jpeg,.png" multiple hidden>
+                        <label for="cert-upload" class="upload-label">
+                            <div class="upload-icon">📤</div>
+                            <h3>Upload Certificate</h3>
+                            <p>Click to browse or drag and drop files here</p>
+                            <span class="upload-hint">Supported formats: PDF, JPG, PNG (Max 10MB)</span>
+                        </label>
+                    </div>
+
+                    <!-- Certificate Details Form -->
+                    <div class="certificate-form">
+                        <h3>Certificate Details</h3>
+                        <div class="form-group">
+                            <label>Certificate Name</label>
+                            <input type="text" class="form-input" placeholder="e.g., ISO 9001 Certificate">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Issue Date</label>
+                                <input type="date" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Expiry Date</label>
+                                <input type="date" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Certificate Type</label>
+                            <select class="form-input">
+                                <option>Select type...</option>
+                                <option>Health & Safety</option>
+                                <option>Quality Management</option>
+                                <option>Environmental Compliance</option>
+                                <option>Insurance</option>
+                                <option>Tax Clearance</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Notes (Optional)</label>
+                            <textarea class="form-input" rows="3" placeholder="Add any additional information..."></textarea>
+                        </div>
+                        <button class="btn-primary">Save Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Expiring Documents List -->
+                <div class="document-list">
+                    <div class="document-item expiring">
+                        <div class="document-icon">⚠️</div>
+                        <div class="document-info">
+                            <h4>Public Liability Insurance</h4>
+                            <p>Expires: Nov 20, 2025 | 15 days remaining</p>
+                            <span class="document-type">Insurance</span>
+                        </div>
+                        <div class="document-status">
+                            <span class="status-badge status-expiring">Expiring Soon</span>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn-link">View</button>
+                            <button class="btn-link">Download</button>
+                            <button class="btn-link">Renew</button>
+                            <button class="btn-link delete">Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="document-item">
+                        <div class="document-icon">📄</div>
+                        <div class="document-info">
+                            <h4>SARS Tax Clearance Certificate</h4>
+                            <p>Expires: Mar 30, 2026 | 146 days remaining</p>
+                            <span class="document-type">Tax Clearance</span>
+                        </div>
+                        <div class="document-status">
+                            <span class="status-badge status-active">Valid</span>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn-link">View</button>
+                            <button class="btn-link">Download</button>
+                            <button class="btn-link delete">Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="document-item">
+                        <div class="document-icon">📄</div>
+                        <div class="document-info">
+                            <h4>Health & Safety Certificate</h4>
+                            <p>Expires: Aug 12, 2026 | 281 days remaining</p>
+                            <span class="document-type">Health & Safety</span>
+                        </div>
+                        <div class="document-status">
+                            <span class="status-badge status-active">Valid</span>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn-link">View</button>
+                            <button class="btn-link">Download</button>
+                            <button class="btn-link delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notification Settings -->
+            <section class="section">
+                <div class="notification-settings">
+                    <div class="notification-header">
+                        <h2>Expiry Notifications</h2>
+                        <p class="section-subtitle">Get reminded before your certificates expire</p>
+                    </div>
+                    <div class="notification-options">
+                        <div class="notification-option">
+                            <input type="checkbox" id="notify-60" checked>
+                            <label for="notify-60">Notify me 60 days before expiry</label>
+                        </div>
+                        <div class="notification-option">
+                            <input type="checkbox" id="notify-30" checked>
+                            <label for="notify-30">Notify me 30 days before expiry</label>
+                        </div>
+                        <div class="notification-option">
+                            <input type="checkbox" id="notify-14" checked>
+                            <label for="notify-14">Notify me 14 days before expiry</label>
+                        </div>
+                        <div class="notification-option">
+                            <input type="checkbox" id="notify-email" checked>
+                            <label for="notify-email">Send email notifications</label>
+                        </div>
+                    </div>
+                    <button class="btn-secondary">Save Preferences</button>
                 </div>
             </section>
         </div>

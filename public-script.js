@@ -621,24 +621,68 @@ function updatePricing() {
         benefits = ['Select services to see your benefits'];
     }
 
-    // Update UI
-    document.getElementById('selected-count').textContent = selectedCount;
-    document.getElementById('tier-name').textContent = tierName;
-    document.getElementById('discount-percent').textContent = savingsLevel;
+    // Update UI with animations
+    const selectedCountElement = document.getElementById('selected-count');
+    const tierNameElement = document.getElementById('tier-name');
+    const discountElement = document.getElementById('discount-percent');
+
+    if (selectedCountElement) {
+        selectedCountElement.style.transition = 'all 0.3s ease';
+        selectedCountElement.style.transform = 'scale(1.3)';
+        selectedCountElement.style.color = 'var(--primary-green)';
+        selectedCountElement.textContent = selectedCount;
+
+        setTimeout(() => {
+            selectedCountElement.style.transform = 'scale(1)';
+            selectedCountElement.style.color = '';
+        }, 300);
+    }
+
+    if (tierNameElement) {
+        tierNameElement.textContent = tierName;
+    }
+
+    if (discountElement) {
+        discountElement.textContent = savingsLevel;
+    }
 
     // Update benefits list
     const benefitItems = document.getElementById('benefit-items');
     benefitItems.innerHTML = benefits.map(benefit => `<li>${benefit}</li>`).join('');
 
-    // Animate the results
+    // Animate the results with more noticeable effect
     const resultCard = document.querySelector('.result-card');
-    resultCard.style.transform = 'scale(1.02)';
-    setTimeout(() => {
-        resultCard.style.transform = 'scale(1)';
-    }, 200);
+    if (resultCard) {
+        resultCard.style.transition = 'all 0.3s ease';
+        resultCard.style.transform = 'scale(1.03)';
+        resultCard.style.boxShadow = '0 10px 30px rgba(16, 185, 129, 0.3)';
+
+        setTimeout(() => {
+            resultCard.style.transform = 'scale(1)';
+            resultCard.style.boxShadow = '';
+        }, 300);
+    }
+
+    // Update tier display with color coding
+    const tierNameElement = document.getElementById('tier-name');
+    if (tierNameElement) {
+        tierNameElement.style.transition = 'all 0.3s ease';
+        tierNameElement.style.color = getTierColor(tierClass);
+        tierNameElement.style.fontWeight = '700';
+    }
 
     // Highlight matching tier in pricing section
     highlightMatchingTier(tierClass);
+}
+
+function getTierColor(tierClass) {
+    const colors = {
+        'platinum': '#94a3b8',
+        'gold': '#ffd700',
+        'silver': '#c0c0c0',
+        'bronze': '#cd7f32'
+    };
+    return colors[tierClass] || 'var(--gray-700)';
 }
 
 function highlightMatchingTier(tierClass) {
@@ -670,8 +714,19 @@ function highlightMatchingTier(tierClass) {
 }
 
 // Initialize calculator
-if (document.querySelector('.pricing-calculator-section')) {
-    initPricingCalculator();
+function initCalculatorOnLoad() {
+    if (document.querySelector('.pricing-calculator-section')) {
+        initPricingCalculator();
+        // Trigger initial state
+        updatePricing();
+    }
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCalculatorOnLoad);
+} else {
+    initCalculatorOnLoad();
 }
 
 // ========================================
@@ -848,3 +903,416 @@ if (document.querySelector('.video-card')) {
 console.log('%c🌱 Bidvest Living - Integrated Services Platform', 'color: #10b981; font-size: 18px; font-weight: bold;');
 console.log('%cWebsite loaded successfully!', 'color: #059669; font-size: 14px;');
 console.log('%cInterested in our services? Visit: onboarding.html', 'color: #6b7280; font-size: 12px;');
+
+// ========================================
+// CHATBOT FUNCTIONALITY
+// ========================================
+
+function initChatbot() {
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotContainer = document.getElementById('chatbotContainer');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSend = document.getElementById('chatbotSend');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const notificationBadge = document.querySelector('.chatbot-notification-badge');
+
+    if (!chatbotToggle || !chatbotContainer) return;
+
+    // Track if this is the first time opening
+    let isFirstOpen = true;
+
+    // Toggle chatbot
+    chatbotToggle.addEventListener('click', function() {
+        chatbotContainer.classList.toggle('active');
+        chatbotToggle.style.display = chatbotContainer.classList.contains('active') ? 'none' : 'flex';
+
+        // Hide notification badge when opened
+        if (chatbotContainer.classList.contains('active') && notificationBadge) {
+            notificationBadge.style.display = 'none';
+        }
+
+        // Auto focus input when opened
+        if (chatbotContainer.classList.contains('active')) {
+            setTimeout(() => {
+                chatbotInput.focus();
+            }, 300);
+
+            // Send greeting on first open
+            if (isFirstOpen) {
+                isFirstOpen = false;
+                setTimeout(() => {
+                    sendGreetingMessage();
+                }, 800);
+            }
+        }
+    });
+
+    // Close chatbot
+    if (chatbotClose) {
+        chatbotClose.addEventListener('click', function() {
+            chatbotContainer.classList.remove('active');
+            chatbotToggle.style.display = 'flex';
+        });
+    }
+
+    // Send message on button click
+    if (chatbotSend) {
+        chatbotSend.addEventListener('click', sendMessage);
+    }
+
+    // Send message on Enter key
+    if (chatbotInput) {
+        chatbotInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    }
+
+    // Quick reply buttons
+    const quickReplyButtons = document.querySelectorAll('.quick-reply-btn');
+    quickReplyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const message = this.getAttribute('data-message');
+            sendMessage(message);
+        });
+    });
+
+    function sendMessage(customMessage = null) {
+        const message = customMessage || chatbotInput.value.trim();
+
+        if (!message) return;
+
+        // Add user message
+        addMessage(message, 'user');
+
+        // Clear input
+        if (!customMessage) {
+            chatbotInput.value = '';
+        }
+
+        // Show typing indicator
+        showTypingIndicator();
+
+        // Simulate bot response after delay
+        setTimeout(() => {
+            hideTypingIndicator();
+            const response = getBotResponse(message);
+            addMessage(response, 'bot');
+        }, 1000 + Math.random() * 1000);
+    }
+
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chatbot-message ${sender}-message`;
+
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = 'message-avatar';
+        avatarDiv.textContent = sender === 'user' ? '👤' : '🤖';
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-content';
+
+        const messagePara = document.createElement('p');
+        messagePara.textContent = text;
+
+        const timeSpan = document.createElement('span');
+        timeSpan.className = 'message-time';
+        timeSpan.textContent = getCurrentTime();
+
+        contentDiv.appendChild(messagePara);
+        contentDiv.appendChild(timeSpan);
+
+        messageDiv.appendChild(avatarDiv);
+        messageDiv.appendChild(contentDiv);
+
+        // Remove quick replies if they exist
+        const quickReplies = chatbotMessages.querySelector('.chatbot-quick-replies');
+        if (quickReplies && sender === 'user') {
+            quickReplies.remove();
+        }
+
+        chatbotMessages.appendChild(messageDiv);
+
+        // Scroll to bottom
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'chatbot-message bot-message typing-indicator';
+        typingDiv.innerHTML = `
+            <div class="message-avatar">🤖</div>
+            <div class="chatbot-typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        `;
+        chatbotMessages.appendChild(typingDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function hideTypingIndicator() {
+        const typingIndicator = chatbotMessages.querySelector('.typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+
+    function getCurrentTime() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    }
+
+    function sendGreetingMessage() {
+        // Get time of day for personalized greeting
+        const hour = new Date().getHours();
+        let timeGreeting = 'Hello';
+
+        if (hour < 12) {
+            timeGreeting = 'Good morning';
+        } else if (hour < 18) {
+            timeGreeting = 'Good afternoon';
+        } else {
+            timeGreeting = 'Good evening';
+        }
+
+        const greetings = [
+            `${timeGreeting}! 👋 I'm the Bidvest Living Assistant. I'm here to help you learn about our integrated facility management services. What would you like to know?`,
+            `${timeGreeting}! Welcome to Bidvest Living! 🌱 I can help you explore our 6 integrated services, understand our pricing, or get started with onboarding. How can I assist you today?`,
+            `${timeGreeting}! Thanks for reaching out! 💬 I'm here to answer questions about our landscaping, plants, coffee, amenities, laundry, and garment services. What interests you?`
+        ];
+
+        // Randomly select a greeting
+        const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+
+        // Show typing indicator
+        showTypingIndicator();
+
+        // Send greeting after a delay
+        setTimeout(() => {
+            hideTypingIndicator();
+            addMessage(greeting, 'bot');
+        }, 1200);
+    }
+
+    function getBotResponse(userMessage) {
+        const message = userMessage.toLowerCase();
+
+        // Knowledge base responses
+        const responses = {
+            'services': 'We offer 6 integrated services: Landscaping & Grounds Maintenance, Indoor Plant Solutions, Coffee & Water, Custom Amenities, Commercial Laundry, and Garment Rental. Would you like to know more about any specific service?',
+
+            'pricing': 'Our pricing is based on partnership tiers: Bronze (1-2 services), Silver (2-3 services), Gold (4-5 services), and Platinum (all 6 services). The more services you bundle, the more you save! Would you like to start building your custom package?',
+
+            'started': 'Great! I\'d be happy to help you get started. You can click the "Get Started" button on this page to begin your onboarding journey, or I can answer any questions you have first. What would you prefer?',
+
+            'contact': 'You can reach us at:\n📞 0800 BIDVEST (243 837) - 24/7 Support\n✉️ hello@bidvestliving.co.za\n📍 Bidvest House, 18 Crescent Drive, Melrose Arch, Johannesburg\n\nWould you like to schedule a consultation?',
+
+            'landscaping': 'Our Landscaping & Grounds Maintenance service includes weekly scheduled maintenance, smart irrigation systems, seasonal planting programs, and professional turf management. It\'s provided by Bidvest Top Turf, our trusted division.',
+
+            'plants': 'Indoor Plant Solutions feature AI health monitoring, predictive maintenance alerts, custom design consultation, and air purification solutions. Our IoT-enabled system ensures your plants are always healthy!',
+
+            'coffee': 'Our Coffee & Water Solutions, powered by Aquazania, include premium coffee beans, auto-replenishment systems, professional equipment, and filtered water solutions to keep your team energized.',
+
+            'amenities': 'Custom Amenities & Supplies from Hotel Amenities Suppliers offers branded packaging, eco-friendly products, automatic inventory management, and premium quality supplies.',
+
+            'laundry': 'Commercial Laundry Services include pickup and delivery, RFID tracking, eco-friendly cleaning, and 24-hour turnaround. Perfect for hotels, hospitals, and large facilities.',
+
+            'garments': 'Garment Rental & Management provides uniform supply & rotation, maintenance included, professional attire options, and complete inventory management.',
+
+            'sustainability': 'We\'re committed to sustainability! We save an average of 340kg CO₂ weekly, achieve 24% carbon reduction, use 100% eco-friendly products, and have deployed 350+ IoT sensors. Our electric fleet and circular economy approach set us apart.',
+
+            'industries': 'We serve 7 key industries: Hospitality (150+ clients), Healthcare (85+ clients), Corporate (120+ clients), Education (65+ clients), Retail (45+ clients), Industrial (30+ clients), and Residential (25+ clients).',
+
+            'benefits': 'Bundling services gives you: Up to 20% savings, one unified dashboard, reduced carbon footprint, AI-powered optimization, priority scheduling, dedicated account management, and more. The more services, the better the benefits!'
+        };
+
+        // Check for keywords and return appropriate response
+        for (const [keyword, response] of Object.entries(responses)) {
+            if (message.includes(keyword)) {
+                return response;
+            }
+        }
+
+        // Greeting responses
+        if (message.match(/\b(hi|hello|hey|good morning|good afternoon|good evening)\b/)) {
+            return 'Hello! Welcome to Bidvest Living. How can I assist you today? I can help you learn about our services, pricing, or get you started with onboarding.';
+        }
+
+        // Thanks responses
+        if (message.match(/\b(thank|thanks|appreciate)\b/)) {
+            return 'You\'re very welcome! Is there anything else I can help you with today?';
+        }
+
+        // Help responses
+        if (message.match(/\b(help|assist|support)\b/)) {
+            return 'I\'m here to help! I can assist you with:\n- Learning about our 6 integrated services\n- Understanding our pricing and partnership tiers\n- Getting started with onboarding\n- Contacting our team\n- Industry-specific solutions\n\nWhat would you like to know more about?';
+        }
+
+        // Default response
+        return 'I\'m here to help! You can ask me about our services, pricing, getting started, or contact information. Would you like to speak with a human agent? You can reach us at 0800 BIDVEST (243 837) or hello@bidvestliving.co.za';
+    }
+
+    // Proactive engagement: Show notification and preview message
+    setTimeout(() => {
+        if (!chatbotContainer.classList.contains('active')) {
+            // Show notification badge
+            if (notificationBadge) {
+                notificationBadge.style.display = 'flex';
+            }
+
+            // Show preview greeting notification
+            showPreviewGreeting();
+        }
+    }, 5000);
+
+    // Show a second proactive message after more time
+    setTimeout(() => {
+        if (!chatbotContainer.classList.contains('active')) {
+            showPreviewGreeting(true);
+        }
+    }, 15000);
+
+    function showPreviewGreeting(isSecondMessage = false) {
+        // Create a preview notification bubble
+        const preview = document.createElement('div');
+        preview.className = 'chatbot-preview-greeting';
+        preview.style.cssText = `
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            background: white;
+            padding: 1rem 1.25rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 280px;
+            z-index: 998;
+            animation: slideInUp 0.4s ease-out;
+            cursor: pointer;
+            border: 2px solid #10b981;
+        `;
+
+        const messages = [
+            '👋 Hi! Need help with facility management?',
+            '💬 Have questions about our services?',
+            '🌱 Looking to transform your facility?',
+            '☕ Want to learn about our integrated solutions?'
+        ];
+
+        const secondMessages = [
+            '🤔 Still thinking? I\'m here to help!',
+            '💡 Let me know if you have any questions!',
+            '✨ Ready to explore our services?'
+        ];
+
+        const messageText = isSecondMessage
+            ? secondMessages[Math.floor(Math.random() * secondMessages.length)]
+            : messages[Math.floor(Math.random() * messages.length)];
+
+        preview.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0;">
+                    🤖
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-weight: 600; color: #111827; font-size: 0.9rem; margin-bottom: 0.25rem;">Bidvest Living Assistant</div>
+                    <div style="color: #4b5563; font-size: 0.85rem; line-height: 1.4;">${messageText}</div>
+                </div>
+                <button style="background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 1.25rem; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">×</button>
+            </div>
+        `;
+
+        document.body.appendChild(preview);
+
+        // Open chat when preview is clicked
+        preview.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'BUTTON') {
+                preview.remove();
+                chatbotToggle.click();
+            }
+        });
+
+        // Close button
+        const closeBtn = preview.querySelector('button');
+        closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            preview.style.animation = 'fadeOut 0.3s ease-out';
+            setTimeout(() => preview.remove(), 300);
+        });
+
+        // Auto remove after 8 seconds
+        setTimeout(() => {
+            if (preview.parentElement) {
+                preview.style.animation = 'fadeOut 0.3s ease-out';
+                setTimeout(() => preview.remove(), 300);
+            }
+        }, 8000);
+    }
+}
+
+// Initialize chatbot
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChatbot);
+} else {
+    initChatbot();
+}
+
+// ========================================
+// AUTOMATION STAT COUNTER ANIMATION
+// ========================================
+
+function animateStatCounters() {
+    const statValues = document.querySelectorAll('.stat-value');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                entry.target.classList.add('counted');
+                const target = parseFloat(entry.target.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        // Format numbers appropriately
+                        if (target >= 1000) {
+                            entry.target.textContent = Math.floor(current).toLocaleString();
+                        } else if (target % 1 !== 0) {
+                            entry.target.textContent = current.toFixed(1);
+                        } else {
+                            entry.target.textContent = Math.floor(current);
+                        }
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        // Final value with proper formatting
+                        if (target >= 1000) {
+                            entry.target.textContent = target.toLocaleString();
+                        } else if (target % 1 !== 0) {
+                            entry.target.textContent = target.toFixed(1);
+                        } else {
+                            entry.target.textContent = target;
+                        }
+                    }
+                };
+
+                updateCounter();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    statValues.forEach(stat => observer.observe(stat));
+}
+
+// Initialize automation animations
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', animateStatCounters);
+} else {
+    animateStatCounters();
+}

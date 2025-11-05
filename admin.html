@@ -40,6 +40,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#" class="dropdown-link" data-page="customers">Customers</a></li>
+                        <li><a href="#" class="dropdown-link" data-page="customer-documents">Customer Documents</a></li>
                         <li><a href="#" class="dropdown-link" data-page="loyalty-mgmt">Loyalty Program</a></li>
                         <li><a href="#" class="dropdown-link" data-page="marketing">Marketing</a></li>
                     </ul>
@@ -2531,6 +2532,566 @@
                             <div class="progress-fill garment" style="width: 4%"></div>
                         </div>
                         <span class="breakdown-percent">4% of total</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Customer Documents Management Page -->
+        <div id="customer-documents" class="page">
+            <section class="page-header">
+                <h1>Customer Documents Management</h1>
+                <p>View and manage all customer compliance documents</p>
+            </section>
+
+            <!-- Document Overview Stats -->
+            <section class="section">
+                <div class="admin-stats-grid">
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">📄</div>
+                        <div class="stat-info">
+                            <div class="stat-value">142</div>
+                            <div class="stat-label">Total Documents</div>
+                            <div class="stat-trend positive">+12 this month</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <div class="stat-value">128</div>
+                            <div class="stat-label">Valid Certificates</div>
+                            <div class="stat-trend">90% compliant</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card warning">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-info">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Expiring Soon</div>
+                            <div class="stat-trend negative">Within 30 days</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card alert">
+                        <div class="stat-icon">❌</div>
+                        <div class="stat-info">
+                            <div class="stat-value">6</div>
+                            <div class="stat-label">Expired</div>
+                            <div class="stat-trend negative">Action required</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters and Search -->
+            <section class="section">
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <input type="text" class="search-input" placeholder="Search customer or document...">
+                        <select class="filter-select">
+                            <option value="all">All Customers</option>
+                            <option value="luxury-resort">Luxury Resort Group</option>
+                            <option value="cape-hotels">Cape Hotels</option>
+                            <option value="joburg-corp">Johannesburg Corporate</option>
+                        </select>
+                        <select class="filter-select">
+                            <option value="all">All Document Types</option>
+                            <option value="bee">BEE Certificates</option>
+                            <option value="insurance">Insurance</option>
+                            <option value="tax">Tax Clearance</option>
+                            <option value="health">Health & Safety</option>
+                            <option value="quality">Quality Management</option>
+                        </select>
+                        <select class="filter-select">
+                            <option value="all">All Status</option>
+                            <option value="valid">Valid</option>
+                            <option value="expiring">Expiring Soon</option>
+                            <option value="expired">Expired</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary">
+                        📊 Generate Report
+                    </button>
+                </div>
+            </section>
+
+            <!-- Expiring Soon - Priority Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>⚠️ Expiring Soon (Priority)</h2>
+                    <span class="priority-badge high">8 Documents</span>
+                </div>
+                <div class="admin-document-list">
+                    <div class="admin-document-item expiring">
+                        <div class="document-customer">
+                            <div class="customer-avatar">LR</div>
+                            <div class="customer-info">
+                                <h4>Luxury Resort Group</h4>
+                                <p>Gold Tier • 6 Active Services</p>
+                            </div>
+                        </div>
+                        <div class="document-details">
+                            <div class="document-icon">📄</div>
+                            <div class="document-info">
+                                <h4>BBBEE Verification Certificate 2024</h4>
+                                <p>Type: BEE Certificate • Uploaded: Dec 10, 2024</p>
+                                <span class="document-type bee">BEE Certificate</span>
+                            </div>
+                        </div>
+                        <div class="document-expiry">
+                            <div class="expiry-label">Expires</div>
+                            <div class="expiry-date warning">Dec 10, 2025</div>
+                            <div class="expiry-countdown">35 days</div>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn-primary-sm">View</button>
+                            <button class="btn-secondary-sm">Download</button>
+                            <button class="btn-secondary-sm">Send Reminder</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-document-item expiring">
+                        <div class="document-customer">
+                            <div class="customer-avatar">LR</div>
+                            <div class="customer-info">
+                                <h4>Luxury Resort Group</h4>
+                                <p>Gold Tier • 6 Active Services</p>
+                            </div>
+                        </div>
+                        <div class="document-details">
+                            <div class="document-icon">⚠️</div>
+                            <div class="document-info">
+                                <h4>Public Liability Insurance</h4>
+                                <p>Type: Insurance • Uploaded: Nov 5, 2024</p>
+                                <span class="document-type insurance">Insurance</span>
+                            </div>
+                        </div>
+                        <div class="document-expiry">
+                            <div class="expiry-label">Expires</div>
+                            <div class="expiry-date critical">Nov 20, 2025</div>
+                            <div class="expiry-countdown">15 days</div>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn-primary-sm">View</button>
+                            <button class="btn-secondary-sm">Download</button>
+                            <button class="btn-secondary-sm">Send Reminder</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-document-item expiring">
+                        <div class="document-customer">
+                            <div class="customer-avatar">CH</div>
+                            <div class="customer-info">
+                                <h4>Cape Hotels</h4>
+                                <p>Silver Tier • 4 Active Services</p>
+                            </div>
+                        </div>
+                        <div class="document-details">
+                            <div class="document-icon">📄</div>
+                            <div class="document-info">
+                                <h4>Tax Clearance Certificate</h4>
+                                <p>Type: Tax Clearance • Uploaded: Oct 15, 2024</p>
+                                <span class="document-type tax">Tax Clearance</span>
+                            </div>
+                        </div>
+                        <div class="document-expiry">
+                            <div class="expiry-label">Expires</div>
+                            <div class="expiry-date warning">Dec 31, 2025</div>
+                            <div class="expiry-countdown">56 days</div>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn-primary-sm">View</button>
+                            <button class="btn-secondary-sm">Download</button>
+                            <button class="btn-secondary-sm">Send Reminder</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- All Customer Documents -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>All Customer Documents</h2>
+                    <div class="filter-group">
+                        <span class="document-count">142 documents</span>
+                        <select class="filter-select">
+                            <option value="recent">Recently Added</option>
+                            <option value="expiry">By Expiry Date</option>
+                            <option value="customer">By Customer</option>
+                            <option value="type">By Type</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Documents by Customer -->
+                <div class="customer-documents-section">
+                    <div class="customer-group">
+                        <div class="customer-group-header">
+                            <div class="customer-avatar large">LR</div>
+                            <div class="customer-group-info">
+                                <h3>Luxury Resort Group</h3>
+                                <p>Gold Tier • Account Manager: Marcus Chen • Last Updated: 2 days ago</p>
+                            </div>
+                            <div class="customer-doc-stats">
+                                <span class="doc-stat valid">3 Valid</span>
+                                <span class="doc-stat expiring">2 Expiring</span>
+                            </div>
+                            <button class="expand-btn">▼</button>
+                        </div>
+                        <div class="customer-documents-list">
+                            <div class="admin-document-item">
+                                <div class="document-details">
+                                    <div class="document-icon">📄</div>
+                                    <div class="document-info">
+                                        <h4>BEE Level 4 Certificate</h4>
+                                        <p>Uploaded: Jan 15, 2025 • File: BEE_Level4_2025.pdf (2.3 MB)</p>
+                                        <span class="document-type bee">BEE Certificate</span>
+                                    </div>
+                                </div>
+                                <div class="document-expiry">
+                                    <div class="expiry-label">Expires</div>
+                                    <div class="expiry-date valid">Jan 15, 2026</div>
+                                    <div class="expiry-countdown">396 days</div>
+                                </div>
+                                <div class="document-status">
+                                    <span class="status-badge status-active">Valid</span>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-link">View</button>
+                                    <button class="btn-link">Download</button>
+                                    <button class="btn-link">History</button>
+                                </div>
+                            </div>
+
+                            <div class="admin-document-item">
+                                <div class="document-details">
+                                    <div class="document-icon">📄</div>
+                                    <div class="document-info">
+                                        <h4>BBBEE Verification Certificate 2024</h4>
+                                        <p>Uploaded: Dec 10, 2024 • File: BBBEE_Verification.pdf (1.8 MB)</p>
+                                        <span class="document-type bee">BEE Certificate</span>
+                                    </div>
+                                </div>
+                                <div class="document-expiry">
+                                    <div class="expiry-label">Expires</div>
+                                    <div class="expiry-date warning">Dec 10, 2025</div>
+                                    <div class="expiry-countdown">35 days</div>
+                                </div>
+                                <div class="document-status">
+                                    <span class="status-badge status-expiring">Expiring Soon</span>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-link">View</button>
+                                    <button class="btn-link">Download</button>
+                                    <button class="btn-link">Send Reminder</button>
+                                </div>
+                            </div>
+
+                            <div class="admin-document-item">
+                                <div class="document-details">
+                                    <div class="document-icon">📄</div>
+                                    <div class="document-info">
+                                        <h4>Public Liability Insurance</h4>
+                                        <p>Uploaded: Nov 5, 2024 • File: Liability_Insurance.pdf (1.2 MB)</p>
+                                        <span class="document-type insurance">Insurance</span>
+                                    </div>
+                                </div>
+                                <div class="document-expiry">
+                                    <div class="expiry-label">Expires</div>
+                                    <div class="expiry-date critical">Nov 20, 2025</div>
+                                    <div class="expiry-countdown">15 days</div>
+                                </div>
+                                <div class="document-status">
+                                    <span class="status-badge status-expiring">Expiring Soon</span>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-link">View</button>
+                                    <button class="btn-link">Download</button>
+                                    <button class="btn-link">Send Reminder</button>
+                                </div>
+                            </div>
+
+                            <div class="admin-document-item">
+                                <div class="document-details">
+                                    <div class="document-icon">📄</div>
+                                    <div class="document-info">
+                                        <h4>SARS Tax Clearance Certificate</h4>
+                                        <p>Uploaded: Sep 20, 2024 • File: Tax_Clearance_2024.pdf (0.8 MB)</p>
+                                        <span class="document-type tax">Tax Clearance</span>
+                                    </div>
+                                </div>
+                                <div class="document-expiry">
+                                    <div class="expiry-label">Expires</div>
+                                    <div class="expiry-date valid">Mar 30, 2026</div>
+                                    <div class="expiry-countdown">146 days</div>
+                                </div>
+                                <div class="document-status">
+                                    <span class="status-badge status-active">Valid</span>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-link">View</button>
+                                    <button class="btn-link">Download</button>
+                                    <button class="btn-link">History</button>
+                                </div>
+                            </div>
+
+                            <div class="admin-document-item">
+                                <div class="document-details">
+                                    <div class="document-icon">📄</div>
+                                    <div class="document-info">
+                                        <h4>Health & Safety Certificate</h4>
+                                        <p>Uploaded: Aug 5, 2024 • File: HS_Certificate.pdf (1.5 MB)</p>
+                                        <span class="document-type health">Health & Safety</span>
+                                    </div>
+                                </div>
+                                <div class="document-expiry">
+                                    <div class="expiry-label">Expires</div>
+                                    <div class="expiry-date valid">Aug 12, 2026</div>
+                                    <div class="expiry-countdown">281 days</div>
+                                </div>
+                                <div class="document-status">
+                                    <span class="status-badge status-active">Valid</span>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-link">View</button>
+                                    <button class="btn-link">Download</button>
+                                    <button class="btn-link">History</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cape Hotels Group -->
+                    <div class="customer-group">
+                        <div class="customer-group-header">
+                            <div class="customer-avatar large">CH</div>
+                            <div class="customer-group-info">
+                                <h3>Cape Hotels</h3>
+                                <p>Silver Tier • Account Manager: Lisa van der Merwe • Last Updated: 5 days ago</p>
+                            </div>
+                            <div class="customer-doc-stats">
+                                <span class="doc-stat valid">2 Valid</span>
+                                <span class="doc-stat expiring">1 Expiring</span>
+                            </div>
+                            <button class="expand-btn">▼</button>
+                        </div>
+                        <div class="customer-documents-list collapsed">
+                            <div class="admin-document-item">
+                                <div class="document-details">
+                                    <div class="document-icon">📄</div>
+                                    <div class="document-info">
+                                        <h4>BEE Level 2 Certificate</h4>
+                                        <p>Uploaded: Feb 10, 2025 • File: BEE_Level2_Cape.pdf (2.1 MB)</p>
+                                        <span class="document-type bee">BEE Certificate</span>
+                                    </div>
+                                </div>
+                                <div class="document-expiry">
+                                    <div class="expiry-label">Expires</div>
+                                    <div class="expiry-date valid">Feb 10, 2026</div>
+                                    <div class="expiry-countdown">422 days</div>
+                                </div>
+                                <div class="document-status">
+                                    <span class="status-badge status-active">Valid</span>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-link">View</button>
+                                    <button class="btn-link">Download</button>
+                                    <button class="btn-link">History</button>
+                                </div>
+                            </div>
+
+                            <div class="admin-document-item">
+                                <div class="document-details">
+                                    <div class="document-icon">📄</div>
+                                    <div class="document-info">
+                                        <h4>Tax Clearance Certificate</h4>
+                                        <p>Uploaded: Oct 15, 2024 • File: Tax_Cape_Hotels.pdf (0.9 MB)</p>
+                                        <span class="document-type tax">Tax Clearance</span>
+                                    </div>
+                                </div>
+                                <div class="document-expiry">
+                                    <div class="expiry-label">Expires</div>
+                                    <div class="expiry-date warning">Dec 31, 2025</div>
+                                    <div class="expiry-countdown">56 days</div>
+                                </div>
+                                <div class="document-status">
+                                    <span class="status-badge status-expiring">Expiring Soon</span>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-link">View</button>
+                                    <button class="btn-link">Download</button>
+                                    <button class="btn-link">Send Reminder</button>
+                                </div>
+                            </div>
+
+                            <div class="admin-document-item">
+                                <div class="document-details">
+                                    <div class="document-icon">📄</div>
+                                    <div class="document-info">
+                                        <h4>Public Liability Insurance</h4>
+                                        <p>Uploaded: Jan 20, 2025 • File: Insurance_Cape.pdf (1.4 MB)</p>
+                                        <span class="document-type insurance">Insurance</span>
+                                    </div>
+                                </div>
+                                <div class="document-expiry">
+                                    <div class="expiry-label">Expires</div>
+                                    <div class="expiry-date valid">Jan 20, 2026</div>
+                                    <div class="expiry-countdown">401 days</div>
+                                </div>
+                                <div class="document-status">
+                                    <span class="status-badge status-active">Valid</span>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-link">View</button>
+                                    <button class="btn-link">Download</button>
+                                    <button class="btn-link">History</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Document Type Breakdown -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Document Type Distribution</h2>
+                </div>
+                <div class="document-type-grid">
+                    <div class="type-breakdown-card">
+                        <div class="type-icon bee-icon">📄</div>
+                        <h3>BEE Certificates</h3>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <span class="stat-value">45</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                            <div class="type-stat valid">
+                                <span class="stat-value">40</span>
+                                <span class="stat-label">Valid</span>
+                            </div>
+                            <div class="type-stat expiring">
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">Expiring</span>
+                            </div>
+                            <div class="type-stat expired">
+                                <span class="stat-value">2</span>
+                                <span class="stat-label">Expired</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="type-breakdown-card">
+                        <div class="type-icon insurance-icon">⚠️</div>
+                        <h3>Insurance</h3>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <span class="stat-value">32</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                            <div class="type-stat valid">
+                                <span class="stat-value">28</span>
+                                <span class="stat-label">Valid</span>
+                            </div>
+                            <div class="type-stat expiring">
+                                <span class="stat-value">2</span>
+                                <span class="stat-label">Expiring</span>
+                            </div>
+                            <div class="type-stat expired">
+                                <span class="stat-value">2</span>
+                                <span class="stat-label">Expired</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="type-breakdown-card">
+                        <div class="type-icon tax-icon">💰</div>
+                        <h3>Tax Clearance</h3>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <span class="stat-value">38</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                            <div class="type-stat valid">
+                                <span class="stat-value">35</span>
+                                <span class="stat-label">Valid</span>
+                            </div>
+                            <div class="type-stat expiring">
+                                <span class="stat-value">2</span>
+                                <span class="stat-label">Expiring</span>
+                            </div>
+                            <div class="type-stat expired">
+                                <span class="stat-value">1</span>
+                                <span class="stat-label">Expired</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="type-breakdown-card">
+                        <div class="type-icon health-icon">🏥</div>
+                        <h3>Health & Safety</h3>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <span class="stat-value">27</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                            <div class="type-stat valid">
+                                <span class="stat-value">25</span>
+                                <span class="stat-label">Valid</span>
+                            </div>
+                            <div class="type-stat expiring">
+                                <span class="stat-value">1</span>
+                                <span class="stat-label">Expiring</span>
+                            </div>
+                            <div class="type-stat expired">
+                                <span class="stat-value">1</span>
+                                <span class="stat-label">Expired</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Automated Reminders Section -->
+            <section class="section">
+                <div class="reminder-settings-card">
+                    <div class="reminder-header">
+                        <h2>Automated Reminder Settings</h2>
+                        <span class="status-badge status-active">Active</span>
+                    </div>
+                    <p class="reminder-description">Automatically send reminders to customers before their documents expire</p>
+                    <div class="reminder-options-grid">
+                        <div class="reminder-option active">
+                            <input type="checkbox" id="remind-60" checked>
+                            <label for="remind-60">
+                                <strong>60 Days Before Expiry</strong>
+                                <p>First reminder - Gives customers time to renew</p>
+                            </label>
+                        </div>
+                        <div class="reminder-option active">
+                            <input type="checkbox" id="remind-30" checked>
+                            <label for="remind-30">
+                                <strong>30 Days Before Expiry</strong>
+                                <p>Second reminder - More urgent notification</p>
+                            </label>
+                        </div>
+                        <div class="reminder-option active">
+                            <input type="checkbox" id="remind-14" checked>
+                            <label for="remind-14">
+                                <strong>14 Days Before Expiry</strong>
+                                <p>Final reminder - Critical urgency</p>
+                            </label>
+                        </div>
+                        <div class="reminder-option active">
+                            <input type="checkbox" id="remind-expired" checked>
+                            <label for="remind-expired">
+                                <strong>On Expiry Date</strong>
+                                <p>Document has expired - Action required</p>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="reminder-actions">
+                        <button class="btn-secondary">Configure Email Templates</button>
+                        <button class="btn-primary">Save Settings</button>
                     </div>
                 </div>
             </section>
