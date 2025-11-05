@@ -6,7 +6,48 @@ document.addEventListener('DOMContentLoaded', function() {
     simulateRealTimeData();
     setupAdminInteractions();
     setupDropdownNavigation();
+    setupMobileMenu();
 });
+
+// ===== Mobile Menu Setup =====
+function setupMobileMenu() {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (mobileMenuToggle && navMenu) {
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle('mobile-active');
+            this.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-container')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close mobile menu when clicking a nav link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        });
+    }
+}
+
+function closeMobileMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    if (navMenu) {
+        navMenu.classList.remove('mobile-active');
+    }
+    if (mobileMenuToggle) {
+        mobileMenuToggle.classList.remove('active');
+    }
+}
 
 // ===== Admin Features Initialization =====
 function initializeAdminFeatures() {

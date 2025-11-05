@@ -34,8 +34,28 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const pageName = this.dataset.page;
             showPage(pageName);
+            // Close mobile menu after clicking a link
+            closeMobileMenu();
         });
     });
+
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (mobileMenuToggle && navMenu) {
+        mobileMenuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('mobile-active');
+            this.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-container')) {
+                closeMobileMenu();
+            }
+        });
+    }
 
     // Initialize charts
     initializeCharts();
@@ -46,6 +66,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Simulate real-time updates
     simulateRealTimeUpdates();
 });
+
+// ===== Mobile Menu Helper Function =====
+function closeMobileMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    if (navMenu) {
+        navMenu.classList.remove('mobile-active');
+    }
+    if (mobileMenuToggle) {
+        mobileMenuToggle.classList.remove('active');
+    }
+}
 
 // ===== Chart Initialization =====
 function initializeCharts() {
