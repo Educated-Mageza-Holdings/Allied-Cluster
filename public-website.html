@@ -949,32 +949,49 @@
                 <div class="chatbot-avatar">💬</div>
                 <div>
                     <h3>Allied Assistant</h3>
-                    <span class="chatbot-status">Online</span>
+                    <span class="chatbot-status">
+                        <span class="status-dot"></span>
+                        Online - Here to Help
+                    </span>
                 </div>
             </div>
-            <button class="chatbot-close" id="chatbotClose" aria-label="Close chat">✕</button>
+            <div class="chatbot-header-actions">
+                <button class="chatbot-minimize" id="chatbotMinimize" aria-label="Minimize chat">−</button>
+                <button class="chatbot-close" id="chatbotClose" aria-label="Close chat">×</button>
+            </div>
         </div>
 
         <div class="chatbot-messages" id="chatbotMessages">
-            <div class="chatbot-quick-replies">
-                <button class="quick-reply-btn" data-message="Tell me about your services">Our Services</button>
-                <button class="quick-reply-btn" data-message="How does pricing work?">Pricing Info</button>
-                <button class="quick-reply-btn" data-message="I want to get started">Get Started</button>
-                <button class="quick-reply-btn" data-message="Contact information">Contact Us</button>
-            </div>
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <div class="chatbot-suggestions" id="chatbotSuggestions">
+            <button class="suggestion-chip" data-message="Tell me about your services">Our Services</button>
+            <button class="suggestion-chip" data-message="How does pricing work?">Pricing Info</button>
+            <button class="suggestion-chip" data-message="I want to get started">Get Started</button>
+            <button class="suggestion-chip" data-message="Contact information">Contact Us</button>
         </div>
 
         <div class="chatbot-input-area">
-            <input
-                type="text"
-                class="chatbot-input"
-                id="chatbotInput"
-                placeholder="Type your message..."
-                aria-label="Chat message input"
-            >
-            <button class="chatbot-send-btn" id="chatbotSend" aria-label="Send message">
-                <span>➤</span>
-            </button>
+            <div class="chatbot-input-wrapper">
+                <input
+                    type="text"
+                    class="chatbot-input"
+                    id="chatbotInput"
+                    placeholder="Ask about our services, pricing, sustainability..."
+                    aria-label="Chat message input"
+                    autocomplete="off"
+                >
+                <button class="chatbot-send-btn" id="chatbotSend" aria-label="Send message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+            <div class="chatbot-footer-note">
+                AI-powered assistant • Allied Cluster Services
+            </div>
         </div>
     </div>
 

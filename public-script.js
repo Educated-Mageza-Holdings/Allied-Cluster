@@ -941,9 +941,8 @@ function initChatbot() {
             // Send greeting on first open
             if (isFirstOpen) {
                 isFirstOpen = false;
-                setTimeout(() => {
-                    sendGreetingMessage();
-                }, 800);
+                // Show greeting immediately
+                sendGreetingMessage();
             }
         }
     });
@@ -953,6 +952,14 @@ function initChatbot() {
         chatbotClose.addEventListener('click', function() {
             chatbotContainer.classList.remove('active');
             chatbotToggle.style.display = 'flex';
+        });
+    }
+
+    // Minimize chatbot
+    const chatbotMinimize = document.getElementById('chatbotMinimize');
+    if (chatbotMinimize) {
+        chatbotMinimize.addEventListener('click', function() {
+            chatbotContainer.classList.toggle('minimized');
         });
     }
 
@@ -970,8 +977,8 @@ function initChatbot() {
         });
     }
 
-    // Quick reply buttons
-    const quickReplyButtons = document.querySelectorAll('.quick-reply-btn');
+    // Quick reply buttons and suggestion chips
+    const quickReplyButtons = document.querySelectorAll('.quick-reply-btn, .suggestion-chip');
     quickReplyButtons.forEach(button => {
         button.addEventListener('click', function() {
             const message = this.getAttribute('data-message');
@@ -1009,7 +1016,7 @@ function initChatbot() {
 
         const avatarDiv = document.createElement('div');
         avatarDiv.className = 'message-avatar';
-        avatarDiv.textContent = sender === 'user' ? '👤' : '🤖';
+        avatarDiv.textContent = sender === 'user' ? '👤' : '💬';
 
         const contentDiv = document.createElement('div');
         contentDiv.className = 'message-content';
@@ -1027,10 +1034,10 @@ function initChatbot() {
         messageDiv.appendChild(avatarDiv);
         messageDiv.appendChild(contentDiv);
 
-        // Remove quick replies if they exist
-        const quickReplies = chatbotMessages.querySelector('.chatbot-quick-replies');
-        if (quickReplies && sender === 'user') {
-            quickReplies.remove();
+        // Hide suggestions after first user message
+        const suggestions = document.getElementById('chatbotSuggestions');
+        if (suggestions && sender === 'user') {
+            suggestions.style.display = 'none';
         }
 
         chatbotMessages.appendChild(messageDiv);
@@ -1043,7 +1050,7 @@ function initChatbot() {
         const typingDiv = document.createElement('div');
         typingDiv.className = 'chatbot-message bot-message typing-indicator';
         typingDiv.innerHTML = `
-            <div class="message-avatar">🤖</div>
+            <div class="message-avatar">💬</div>
             <div class="chatbot-typing-indicator">
                 <div class="typing-dot"></div>
                 <div class="typing-dot"></div>
@@ -1093,11 +1100,11 @@ function initChatbot() {
         // Show typing indicator
         showTypingIndicator();
 
-        // Send greeting after a delay
+        // Send greeting after a short delay
         setTimeout(() => {
             hideTypingIndicator();
             addMessage(greeting, 'bot');
-        }, 1200);
+        }, 600);
     }
 
     function getBotResponse(userMessage) {
