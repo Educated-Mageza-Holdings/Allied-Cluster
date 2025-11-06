@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bidvest Living - Customer Portal</title>
+    <title>Allied - Customer Portal</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,8 +11,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <img src="logo.jpg" alt="Bidvest Living Logo" class="logo-image">
-                <span class="logo-text">Bidvest Living</span>
+                <img src="logo.jpg" alt="Allied Logo" class="logo-image">
+                <span class="logo-text">Allied</span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#" class="nav-link active" data-page="dashboard">Dashboard</a></li>
@@ -235,7 +235,7 @@
         <div id="services" class="page">
             <section class="page-header">
                 <h1>Service Management</h1>
-                <p>Book, manage, and track all your Bidvest Living services</p>
+                <p>Book, manage, and track all your Allied services</p>
             </section>
 
             <!-- Service Categories -->
@@ -558,7 +558,7 @@
                     <div class="incentive-content">
                         <div class="incentive-left">
                             <h3>You're Already Using All 6 Services!</h3>
-                            <p>We've noticed your exceptional partnership with Bidvest Living. As a valued client using our complete service portfolio, you qualify for our exclusive Platinum Tier upgrade.</p>
+                            <p>We've noticed your exceptional partnership with Allied. As a valued client using our complete service portfolio, you qualify for our exclusive Platinum Tier upgrade.</p>
                             <div class="platinum-benefits">
                                 <h4>Platinum Tier Benefits:</h4>
                                 <div class="benefit-grid">
@@ -720,7 +720,7 @@
                 <div class="referral-program-card">
                     <div class="referral-content">
                         <h2>Refer a Business & Earn Rewards</h2>
-                        <p>Share the Bidvest Living experience with colleagues and earn 1,000 reward points for each successful referral.</p>
+                        <p>Share the Allied experience with colleagues and earn 1,000 reward points for each successful referral.</p>
                         <div class="referral-stats">
                             <div class="referral-stat">
                                 <div class="referral-stat-value">3</div>
@@ -999,7 +999,7 @@
                 <div class="certification-showcase">
                     <div class="certification-content">
                         <h2>Working Toward ISO 14001 Certification</h2>
-                        <p>Our partnership contributes to Bidvest Living's pursuit of internationally recognized sustainability certifications. Your facility benefits from our commitment to validated environmental management standards.</p>
+                        <p>Our partnership contributes to Allied's pursuit of internationally recognized sustainability certifications. Your facility benefits from our commitment to validated environmental management standards.</p>
                         <div class="certification-benefits">
                             <div class="cert-benefit">
                                 <span class="cert-icon">✓</span>
@@ -1351,6 +1351,79 @@
             </section>
         </div>
     </main>
+
+    <!-- Customer Support Chatbot -->
+    <div class="chatbot-container" id="customerChatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar">💬</div>
+                <div>
+                    <h3>Customer Support</h3>
+                    <span class="chatbot-status">
+                        <span class="status-dot"></span>
+                        Online - We're here to help
+                    </span>
+                </div>
+            </div>
+            <div class="chatbot-header-actions">
+                <button class="chatbot-minimize" id="minimizeCustomerChatbot" aria-label="Minimize chat">−</button>
+                <button class="chatbot-close" id="closeCustomerChatbot" aria-label="Close chat">×</button>
+            </div>
+        </div>
+
+        <div class="chatbot-messages" id="customerChatbotMessages">
+            <div class="chat-message bot-message">
+                <div class="message-avatar">💬</div>
+                <div class="message-content">
+                    <p>Hello! I'm your Allied Customer Support Assistant. I can help you with:</p>
+                    <ul>
+                        <li>📅 Booking and scheduling services</li>
+                        <li>📊 Viewing your service history</li>
+                        <li>💰 Billing and invoices</li>
+                        <li>🎁 Loyalty rewards information</li>
+                        <li>🌱 Sustainability impact tracking</li>
+                        <li>📞 Contact information</li>
+                    </ul>
+                    <p>How can I assist you today?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chatbot-suggestions" id="customerChatbotSuggestions">
+            <button class="suggestion-chip" data-query="When is my next service?">Next service</button>
+            <button class="suggestion-chip" data-query="Show me my loyalty points">Loyalty points</button>
+            <button class="suggestion-chip" data-query="Book a service">Book service</button>
+        </div>
+
+        <div class="chatbot-input-area">
+            <div class="chatbot-input-wrapper">
+                <input
+                    type="text"
+                    class="chatbot-input"
+                    id="customerChatbotInput"
+                    placeholder="Ask about services, bookings, billing..."
+                    autocomplete="off"
+                >
+                <button class="chatbot-send" id="sendCustomerChatMessage" aria-label="Send message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+            <div class="chatbot-footer-note">
+                Powered by Allied • Available 24/7
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-toggle" id="customerChatbotToggle" aria-label="Open customer support">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="chatbot-badge" id="customerChatbotBadge">1</span>
+    </button>
 
     <script src="script.js"></script>
 </body>

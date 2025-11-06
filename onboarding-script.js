@@ -415,7 +415,7 @@ function showSuccessModal(data) {
         <div class="modal-content">
             <div class="success-content">
                 <div class="success-icon">✓</div>
-                <h2>Welcome to Bidvest Living!</h2>
+                <h2>Welcome to Allied!</h2>
                 <p class="success-message">
                     Thank you for registering, ${data.contactPerson.firstName}! Your account has been created successfully.
                 </p>
@@ -543,7 +543,7 @@ function completeRegistration() {
 
 // ===== Initialize =====
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🌿 Bidvest Living Onboarding Platform Loaded');
+    console.log('🌿 Allied Onboarding Platform Loaded');
 
     // Close modal on outside click
     document.addEventListener('click', function(e) {

@@ -751,6 +751,402 @@ function navigateToPage(pageName) {
     }
 }
 
+// ===== Automation Stats Counter Animation =====
+function animateStatCounters() {
+    const statValues = document.querySelectorAll('.auto-stat .stat-value');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                entry.target.classList.add('counted');
+                const target = parseFloat(entry.target.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        // Format numbers appropriately
+                        if (target >= 1000) {
+                            entry.target.textContent = Math.floor(current).toLocaleString();
+                        } else if (target % 1 !== 0) {
+                            entry.target.textContent = current.toFixed(1);
+                        } else {
+                            entry.target.textContent = Math.floor(current);
+                        }
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        // Final value with proper formatting
+                        if (target >= 1000) {
+                            entry.target.textContent = target.toLocaleString();
+                        } else if (target % 1 !== 0) {
+                            entry.target.textContent = target.toFixed(1);
+                        } else {
+                            entry.target.textContent = target;
+                        }
+                    }
+                };
+
+                updateCounter();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    statValues.forEach(stat => observer.observe(stat));
+}
+
+// Initialize automation animations
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', animateStatCounters);
+} else {
+    animateStatCounters();
+}
+
+// ===== Staff Chatbot Assistant =====
+const StaffChatbot = {
+    container: null,
+    messagesContainer: null,
+    input: null,
+    suggestionsContainer: null,
+    badge: null,
+
+    // Customer database (simulated)
+    customerData: {
+        'luxury resort group': {
+            name: 'Luxury Resort Group',
+            tier: 'Gold',
+            revenue: 'R42,350/month',
+            services: ['Landscaping', 'Indoor Plants', 'Coffee', 'Laundry', 'Amenities'],
+            activeServices: 5,
+            nextService: 'Tomorrow - Landscaping Maintenance',
+            satisfaction: '9.8/10',
+            contractEnd: '2026-03-15',
+            contact: 'Sarah Thompson',
+            phone: '+27 11 234 5678'
+        },
+        'grand hotel': {
+            name: 'Grand Hotel',
+            tier: 'Gold',
+            revenue: 'R38,720/month',
+            services: ['Landscaping', 'Indoor Plants', 'Coffee', 'Laundry'],
+            activeServices: 4,
+            nextService: 'Today - Laundry Pickup',
+            satisfaction: '9.6/10',
+            contractEnd: '2025-12-20',
+            contact: 'Michael Chen',
+            phone: '+27 11 345 6789'
+        },
+        'corporate plaza': {
+            name: 'Corporate Plaza',
+            tier: 'Silver',
+            revenue: 'R28,500/month',
+            services: ['Indoor Plants', 'Coffee', 'Amenities'],
+            activeServices: 3,
+            nextService: 'Today - Plant Maintenance',
+            satisfaction: '9.4/10',
+            contractEnd: '2025-09-30',
+            contact: 'Linda Martinez',
+            phone: '+27 11 456 7890'
+        },
+        'peninsula resort': {
+            name: 'Peninsula Resort',
+            tier: 'Platinum',
+            revenue: 'R52,180/month',
+            services: ['Landscaping', 'Indoor Plants', 'Coffee', 'Laundry', 'Amenities', 'Garments'],
+            activeServices: 6,
+            nextService: 'Tomorrow - Coffee Delivery',
+            satisfaction: '9.9/10',
+            contractEnd: '2026-06-30',
+            contact: 'David Kim',
+            phone: '+27 11 567 8901'
+        }
+    },
+
+    init() {
+        this.container = document.getElementById('staffChatbot');
+        this.messagesContainer = document.getElementById('chatbotMessages');
+        this.input = document.getElementById('chatbotInput');
+        this.suggestionsContainer = document.getElementById('chatbotSuggestions');
+        this.badge = document.getElementById('chatbotBadge');
+
+        // Toggle button
+        document.getElementById('chatbotToggle').addEventListener('click', () => {
+            this.toggleChat();
+        });
+
+        // Close and minimize buttons
+        document.getElementById('closeChatbot').addEventListener('click', () => {
+            this.closeChat();
+        });
+
+        document.getElementById('minimizeChatbot').addEventListener('click', () => {
+            this.minimizeChat();
+        });
+
+        // Send button
+        document.getElementById('sendChatMessage').addEventListener('click', () => {
+            this.sendMessage();
+        });
+
+        // Enter key to send
+        this.input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.sendMessage();
+            }
+        });
+
+        // Suggestion chips
+        document.querySelectorAll('.suggestion-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const query = chip.getAttribute('data-query');
+                this.input.value = query;
+                this.sendMessage();
+            });
+        });
+    },
+
+    toggleChat() {
+        this.container.classList.toggle('active');
+        if (this.container.classList.contains('active')) {
+            this.input.focus();
+            this.hideBadge();
+        }
+    },
+
+    closeChat() {
+        this.container.classList.remove('active');
+    },
+
+    minimizeChat() {
+        this.container.classList.toggle('minimized');
+    },
+
+    hideBadge() {
+        if (this.badge) {
+            this.badge.style.display = 'none';
+        }
+    },
+
+    sendMessage() {
+        const message = this.input.value.trim();
+        if (!message) return;
+
+        // Add user message
+        this.addMessage(message, 'user');
+        this.input.value = '';
+
+        // Show typing indicator
+        this.showTypingIndicator();
+
+        // Process message and respond
+        setTimeout(() => {
+            this.hideTypingIndicator();
+            const response = this.processQuery(message);
+            this.addMessage(response.text, 'bot', response.data);
+        }, 1000 + Math.random() * 1000);
+    },
+
+    addMessage(text, sender, data = null) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${sender}-message`;
+
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        avatar.textContent = sender === 'user' ? '👤' : '🤖';
+
+        const content = document.createElement('div');
+        content.className = 'message-content';
+        content.innerHTML = text;
+
+        // Add customer info card if data is provided
+        if (data) {
+            const infoCard = this.createCustomerInfoCard(data);
+            content.appendChild(infoCard);
+        }
+
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(content);
+
+        this.messagesContainer.appendChild(messageDiv);
+        this.scrollToBottom();
+    },
+
+    createCustomerInfoCard(customer) {
+        const card = document.createElement('div');
+        card.className = 'customer-info-card';
+        card.innerHTML = `
+            <h4>${customer.name}</h4>
+            <div class="info-row">
+                <span class="info-label">Tier:</span>
+                <span class="info-value">${customer.tier}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Monthly Revenue:</span>
+                <span class="info-value">${customer.revenue}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Active Services:</span>
+                <span class="info-value">${customer.activeServices} services</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Next Service:</span>
+                <span class="info-value">${customer.nextService}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Contact:</span>
+                <span class="info-value">${customer.contact}</span>
+            </div>
+        `;
+        return card;
+    },
+
+    showTypingIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = 'chat-message bot-message typing-indicator-message';
+        indicator.innerHTML = `
+            <div class="message-avatar">🤖</div>
+            <div class="message-content typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        `;
+        this.messagesContainer.appendChild(indicator);
+        this.scrollToBottom();
+    },
+
+    hideTypingIndicator() {
+        const indicator = this.messagesContainer.querySelector('.typing-indicator-message');
+        if (indicator) {
+            indicator.remove();
+        }
+    },
+
+    scrollToBottom() {
+        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+    },
+
+    processQuery(query) {
+        const lowerQuery = query.toLowerCase();
+
+        // Customer-specific queries
+        for (const [key, customer] of Object.entries(this.customerData)) {
+            if (lowerQuery.includes(key)) {
+                return {
+                    text: `Here's the information for <strong>${customer.name}</strong>:`,
+                    data: customer
+                };
+            }
+        }
+
+        // Today's customers
+        if (lowerQuery.includes('today') && (lowerQuery.includes('customer') || lowerQuery.includes('active'))) {
+            return {
+                text: `<p>Today we have <strong>2 customers</strong> with scheduled services:</p>
+                      <ul>
+                        <li><strong>Grand Hotel</strong> - Laundry Pickup at 10:00 AM</li>
+                        <li><strong>Corporate Plaza</strong> - Plant Maintenance at 2:00 PM</li>
+                      </ul>
+                      <p>Would you like more details about any of these customers?</p>`,
+                data: null
+            };
+        }
+
+        // Revenue queries
+        if (lowerQuery.includes('revenue') || lowerQuery.includes('highest') || lowerQuery.includes('top')) {
+            return {
+                text: `<p>Here are our <strong>top revenue customers</strong>:</p>
+                      <ul>
+                        <li><strong>Peninsula Resort</strong> - R52,180/month (Platinum)</li>
+                        <li><strong>Luxury Resort Group</strong> - R42,350/month (Gold)</li>
+                        <li><strong>Grand Hotel</strong> - R38,720/month (Gold)</li>
+                        <li><strong>Corporate Plaza</strong> - R28,500/month (Silver)</li>
+                      </ul>
+                      <p>Total monthly recurring revenue: <strong>R161,750</strong></p>`,
+                data: null
+            };
+        }
+
+        // Renewals
+        if (lowerQuery.includes('renewal') || lowerQuery.includes('contract') || lowerQuery.includes('expir')) {
+            return {
+                text: `<p>Upcoming contract renewals:</p>
+                      <ul>
+                        <li><strong>Corporate Plaza</strong> - Expires Sept 30, 2025 (4 months)</li>
+                        <li><strong>Grand Hotel</strong> - Expires Dec 20, 2025 (7 months)</li>
+                        <li><strong>Luxury Resort Group</strong> - Expires Mar 15, 2026 (10 months)</li>
+                      </ul>
+                      <p>I recommend starting renewal conversations 60 days before expiration.</p>`,
+                data: null
+            };
+        }
+
+        // Services
+        if (lowerQuery.includes('service') && (lowerQuery.includes('schedule') || lowerQuery.includes('upcoming'))) {
+            return {
+                text: `<p>Upcoming services in the next 24 hours:</p>
+                      <ul>
+                        <li><strong>Today 10:00 AM</strong> - Grand Hotel (Laundry Pickup)</li>
+                        <li><strong>Today 2:00 PM</strong> - Corporate Plaza (Plant Maintenance)</li>
+                        <li><strong>Tomorrow 8:00 AM</strong> - Luxury Resort Group (Landscaping)</li>
+                        <li><strong>Tomorrow 11:00 AM</strong> - Peninsula Resort (Coffee Delivery)</li>
+                      </ul>`,
+                data: null
+            };
+        }
+
+        // Loyalty programs
+        if (lowerQuery.includes('loyalty') || lowerQuery.includes('tier') || lowerQuery.includes('platinum') || lowerQuery.includes('gold')) {
+            return {
+                text: `<p>Current customer tier breakdown:</p>
+                      <ul>
+                        <li><strong>Platinum Tier:</strong> 1 customer (Peninsula Resort)</li>
+                        <li><strong>Gold Tier:</strong> 2 customers (Luxury Resort Group, Grand Hotel)</li>
+                        <li><strong>Silver Tier:</strong> 1 customer (Corporate Plaza)</li>
+                      </ul>
+                      <p>Platinum customers receive 20% discount, Gold get 15%, and Silver get 10%.</p>`,
+                data: null
+            };
+        }
+
+        // Satisfaction
+        if (lowerQuery.includes('satisfaction') || lowerQuery.includes('rating') || lowerQuery.includes('feedback')) {
+            return {
+                text: `<p>Customer satisfaction scores:</p>
+                      <ul>
+                        <li><strong>Peninsula Resort:</strong> 9.9/10 ⭐</li>
+                        <li><strong>Luxury Resort Group:</strong> 9.8/10 ⭐</li>
+                        <li><strong>Grand Hotel:</strong> 9.6/10 ⭐</li>
+                        <li><strong>Corporate Plaza:</strong> 9.4/10 ⭐</li>
+                      </ul>
+                      <p>Average satisfaction: <strong>9.7/10</strong> - Excellent!</p>`,
+                data: null
+            };
+        }
+
+        // Default response
+        return {
+            text: `<p>I can help you with information about:</p>
+                  <ul>
+                    <li>Specific customer details (try "Show me Luxury Resort Group")</li>
+                    <li>Revenue information</li>
+                    <li>Service schedules</li>
+                    <li>Contract renewals</li>
+                    <li>Loyalty tiers and programs</li>
+                    <li>Customer satisfaction scores</li>
+                  </ul>
+                  <p>Try asking a question like "Which customers have the highest revenue?" or "Show me today's customers"</p>`,
+            data: null
+        };
+    }
+};
+
+// Initialize chatbot when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    StaffChatbot.init();
+});
+
 // ===== Export Functions =====
 window.showAdminNotification = showAdminNotification;
 window.showServiceDetails = showServiceDetails;
@@ -758,3 +1154,4 @@ window.showCustomerDetails = showCustomerDetails;
 
 console.log('🔧 Allied Environments Operations Dashboard Loaded');
 console.log('📊 Real-time monitoring active');
+console.log('🤖 Staff Assistant Chatbot Ready');

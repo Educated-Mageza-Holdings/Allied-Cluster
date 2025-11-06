@@ -1,4 +1,4 @@
-# Bidvest Living - Onboarding Flow Documentation
+# Allied - Onboarding Flow Documentation
 
 ## Overview
 

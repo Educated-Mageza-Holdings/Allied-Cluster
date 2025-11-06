@@ -590,3 +590,370 @@ setInterval(() => {
 
 console.log('🌿 Allied Environments Platform Loaded Successfully');
 console.log('💡 Interactive prototype ready - try navigating between pages and clicking service cards!');
+
+// ===== Customer Support Chatbot =====
+const CustomerChatbot = {
+    container: null,
+    messagesContainer: null,
+    input: null,
+    suggestionsContainer: null,
+    badge: null,
+
+    // Customer account data (simulated - Luxury Resort Group)
+    accountData: {
+        name: 'Luxury Resort Group',
+        tier: 'Gold Tier',
+        discount: '15%',
+        loyaltyPoints: 2840,
+        pointsToNextTier: 1160,
+        nextTier: 'Platinum',
+        activeServices: ['Landscaping', 'Indoor Plants', 'Coffee Solutions', 'Laundry', 'Amenities'],
+        totalServices: 5,
+        monthlySpend: 'R42,350',
+        accountSince: 'March 2023',
+        nextService: 'Tomorrow at 8:00 AM - Landscaping Maintenance',
+        upcomingServices: [
+            { service: 'Landscaping', date: 'Tomorrow', time: '8:00 AM', status: 'Scheduled' },
+            { service: 'Plant Care', date: 'Friday', time: '10:00 AM', status: 'Scheduled' },
+            { service: 'Coffee Delivery', date: 'Monday', time: '9:00 AM', status: 'Scheduled' }
+        ],
+        recentInvoices: [
+            { id: 'INV-2025-042', amount: 'R42,350', date: 'May 1, 2025', status: 'Paid' },
+            { id: 'INV-2025-041', amount: 'R42,350', date: 'Apr 1, 2025', status: 'Paid' }
+        ],
+        sustainabilityImpact: {
+            carbonReduced: '2,840 kg',
+            waterSaved: '15,600 L',
+            wasteRecycled: '89%'
+        },
+        accountManager: {
+            name: 'Sarah Thompson',
+            phone: '+27 11 234 5678',
+            email: 'sarah.thompson@allied.co.za'
+        }
+    },
+
+    init() {
+        this.container = document.getElementById('customerChatbot');
+        this.messagesContainer = document.getElementById('customerChatbotMessages');
+        this.input = document.getElementById('customerChatbotInput');
+        this.suggestionsContainer = document.getElementById('customerChatbotSuggestions');
+        this.badge = document.getElementById('customerChatbotBadge');
+
+        // Toggle button
+        document.getElementById('customerChatbotToggle').addEventListener('click', () => {
+            this.toggleChat();
+        });
+
+        // Close and minimize buttons
+        document.getElementById('closeCustomerChatbot').addEventListener('click', () => {
+            this.closeChat();
+        });
+
+        document.getElementById('minimizeCustomerChatbot').addEventListener('click', () => {
+            this.minimizeChat();
+        });
+
+        // Send button
+        document.getElementById('sendCustomerChatMessage').addEventListener('click', () => {
+            this.sendMessage();
+        });
+
+        // Enter key to send
+        this.input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.sendMessage();
+            }
+        });
+
+        // Suggestion chips
+        document.querySelectorAll('.suggestion-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const query = chip.getAttribute('data-query');
+                this.input.value = query;
+                this.sendMessage();
+            });
+        });
+    },
+
+    toggleChat() {
+        this.container.classList.toggle('active');
+        if (this.container.classList.contains('active')) {
+            this.input.focus();
+            this.hideBadge();
+        }
+    },
+
+    closeChat() {
+        this.container.classList.remove('active');
+    },
+
+    minimizeChat() {
+        this.container.classList.toggle('minimized');
+    },
+
+    hideBadge() {
+        if (this.badge) {
+            this.badge.style.display = 'none';
+        }
+    },
+
+    sendMessage() {
+        const message = this.input.value.trim();
+        if (!message) return;
+
+        // Add user message
+        this.addMessage(message, 'user');
+        this.input.value = '';
+
+        // Show typing indicator
+        this.showTypingIndicator();
+
+        // Process message and respond
+        setTimeout(() => {
+            this.hideTypingIndicator();
+            const response = this.processQuery(message);
+            this.addMessage(response.text, 'bot', response.data);
+        }, 800 + Math.random() * 800);
+    },
+
+    addMessage(text, sender, data = null) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${sender}-message`;
+
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        avatar.textContent = sender === 'user' ? '👤' : '💬';
+
+        const content = document.createElement('div');
+        content.className = 'message-content';
+        content.innerHTML = text;
+
+        // Add service info card if data is provided
+        if (data) {
+            const infoCard = this.createServiceInfoCard(data);
+            content.appendChild(infoCard);
+        }
+
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(content);
+
+        this.messagesContainer.appendChild(messageDiv);
+        this.scrollToBottom();
+    },
+
+    createServiceInfoCard(data) {
+        const card = document.createElement('div');
+        card.className = 'service-info-card';
+
+        let html = `<h4>${data.title}</h4>`;
+
+        data.items.forEach(item => {
+            html += `
+                <div class="info-row">
+                    <span class="info-label">${item.label}:</span>
+                    <span class="info-value">${item.value}</span>
+                </div>
+            `;
+        });
+
+        if (data.actions) {
+            html += '<div class="chat-action-buttons">';
+            data.actions.forEach(action => {
+                html += `<button class="chat-action-btn">${action}</button>`;
+            });
+            html += '</div>';
+        }
+
+        card.innerHTML = html;
+        return card;
+    },
+
+    showTypingIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = 'chat-message bot-message typing-indicator-message';
+        indicator.innerHTML = `
+            <div class="message-avatar">💬</div>
+            <div class="message-content typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        `;
+        this.messagesContainer.appendChild(indicator);
+        this.scrollToBottom();
+    },
+
+    hideTypingIndicator() {
+        const indicator = this.messagesContainer.querySelector('.typing-indicator-message');
+        if (indicator) {
+            indicator.remove();
+        }
+    },
+
+    scrollToBottom() {
+        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+    },
+
+    processQuery(query) {
+        const lowerQuery = query.toLowerCase();
+        const account = this.accountData;
+
+        // Next service queries
+        if (lowerQuery.includes('next service') || lowerQuery.includes('upcoming') || lowerQuery.includes('when is my')) {
+            return {
+                text: `<p>Your next scheduled service is:</p><p><strong>${account.nextService}</strong></p>`,
+                data: {
+                    title: 'Upcoming Services',
+                    items: account.upcomingServices.map(s => ({
+                        label: s.service,
+                        value: `${s.date} at ${s.time}`
+                    })),
+                    actions: ['View Full Schedule', 'Reschedule Service']
+                }
+            };
+        }
+
+        // Loyalty points queries
+        if (lowerQuery.includes('loyalty') || lowerQuery.includes('points') || lowerQuery.includes('rewards')) {
+            return {
+                text: `<p>Great news! You're a <strong>${account.tier}</strong> member with <strong>${account.loyaltyPoints} points</strong>.</p>
+                      <p>You're only <strong>${account.pointsToNextTier} points</strong> away from ${account.nextTier} Tier! 🎉</p>`,
+                data: {
+                    title: 'Loyalty Rewards',
+                    items: [
+                        { label: 'Current Tier', value: account.tier },
+                        { label: 'Total Points', value: account.loyaltyPoints.toLocaleString() },
+                        { label: 'Current Discount', value: account.discount },
+                        { label: 'To Next Tier', value: `${account.pointsToNextTier} points` }
+                    ],
+                    actions: ['View Rewards Catalog', 'Redeem Points']
+                }
+            };
+        }
+
+        // Booking queries
+        if (lowerQuery.includes('book') || lowerQuery.includes('schedule') || lowerQuery.includes('new service')) {
+            return {
+                text: `<p>I'd be happy to help you book a service! We offer:</p>
+                      <ul>
+                        <li><strong>Landscaping</strong> - Weekly maintenance</li>
+                        <li><strong>Plant Care</strong> - Bi-weekly with AI monitoring</li>
+                        <li><strong>Coffee Solutions</strong> - Weekly delivery</li>
+                        <li><strong>Laundry Services</strong> - As needed</li>
+                        <li><strong>Amenities</strong> - Monthly delivery</li>
+                        <li><strong>Garment Rental</strong> - Add this service</li>
+                      </ul>
+                      <p>Which service would you like to book?</p>`,
+                data: null
+            };
+        }
+
+        // Billing queries
+        if (lowerQuery.includes('bill') || lowerQuery.includes('invoice') || lowerQuery.includes('payment') || lowerQuery.includes('cost')) {
+            return {
+                text: `<p>Here's your billing information:</p>
+                      <p>Your current monthly spend is <strong>${account.monthlySpend}</strong> with a ${account.discount} ${account.tier} discount applied.</p>`,
+                data: {
+                    title: 'Recent Invoices',
+                    items: account.recentInvoices.map(inv => ({
+                        label: inv.id,
+                        value: `${inv.amount} - ${inv.status}`
+                    })),
+                    actions: ['View All Invoices', 'Download Statement']
+                }
+            };
+        }
+
+        // Sustainability queries
+        if (lowerQuery.includes('sustainability') || lowerQuery.includes('environmental') || lowerQuery.includes('carbon') || lowerQuery.includes('impact')) {
+            return {
+                text: `<p>Your partnership with Allied has made a real environmental impact! 🌱</p>`,
+                data: {
+                    title: 'Your Sustainability Impact',
+                    items: [
+                        { label: 'Carbon Reduced', value: account.sustainabilityImpact.carbonReduced },
+                        { label: 'Water Saved', value: account.sustainabilityImpact.waterSaved },
+                        { label: 'Waste Recycled', value: account.sustainabilityImpact.wasteRecycled }
+                    ],
+                    actions: ['View Full Report', 'Share Impact']
+                }
+            };
+        }
+
+        // Account queries
+        if (lowerQuery.includes('account') || lowerQuery.includes('profile') || lowerQuery.includes('my information')) {
+            return {
+                text: `<p>Here's your account overview:</p>`,
+                data: {
+                    title: 'Account Information',
+                    items: [
+                        { label: 'Company', value: account.name },
+                        { label: 'Member Since', value: account.accountSince },
+                        { label: 'Active Services', value: `${account.totalServices} services` },
+                        { label: 'Account Manager', value: account.accountManager.name },
+                        { label: 'Phone', value: account.accountManager.phone }
+                    ],
+                    actions: ['Update Profile', 'Contact Manager']
+                }
+            };
+        }
+
+        // Contact queries
+        if (lowerQuery.includes('contact') || lowerQuery.includes('phone') || lowerQuery.includes('email') || lowerQuery.includes('reach')) {
+            return {
+                text: `<p>Here's how to reach us:</p>`,
+                data: {
+                    title: 'Contact Information',
+                    items: [
+                        { label: 'Account Manager', value: account.accountManager.name },
+                        { label: 'Direct Phone', value: account.accountManager.phone },
+                        { label: 'Email', value: account.accountManager.email },
+                        { label: '24/7 Support', value: '0800 ALLIED (243 837)' },
+                        { label: 'General Email', value: 'hello@allied.co.za' }
+                    ],
+                    actions: ['Schedule Call', 'Send Email']
+                }
+            };
+        }
+
+        // Help/Services queries
+        if (lowerQuery.includes('help') || lowerQuery.includes('services') || lowerQuery.includes('what can')) {
+            return {
+                text: `<p>I can help you with:</p>
+                      <ul>
+                        <li><strong>Service Scheduling</strong> - View and manage your bookings</li>
+                        <li><strong>Loyalty Rewards</strong> - Check points and redeem rewards</li>
+                        <li><strong>Billing</strong> - View invoices and payment history</li>
+                        <li><strong>Sustainability</strong> - Track your environmental impact</li>
+                        <li><strong>Account Management</strong> - Update your profile</li>
+                        <li><strong>Support</strong> - Get help from your account manager</li>
+                      </ul>
+                      <p>What would you like to know more about?</p>`,
+                data: null
+            };
+        }
+
+        // Default response
+        return {
+            text: `<p>I'm here to help! You can ask me about:</p>
+                  <ul>
+                    <li>📅 "When is my next service?"</li>
+                    <li>🎁 "Show me my loyalty points"</li>
+                    <li>💰 "What's my current bill?"</li>
+                    <li>🌱 "What's my sustainability impact?"</li>
+                    <li>📞 "How do I contact my account manager?"</li>
+                    <li>📅 "Book a new service"</li>
+                  </ul>
+                  <p>Try asking one of these questions!</p>`,
+            data: null
+        };
+    }
+};
+
+// Initialize customer chatbot when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    CustomerChatbot.init();
+});
+
+console.log('💬 Customer Support Chatbot Ready');

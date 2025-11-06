@@ -1,10 +1,10 @@
-# Bidvest Living - Customer Portal Prototype
+# Allied - Customer Portal Prototype
 
-A fully functional HTML/CSS/JavaScript prototype of the Bidvest Living integrated service platform.
+A fully functional HTML/CSS/JavaScript prototype of the Allied integrated service platform.
 
 ## Overview
 
-This prototype demonstrates the customer-facing portal for Bidvest Living's integrated service platform. It showcases how customers can manage all six services (landscaping, indoor plants, coffee/water, amenities, laundry, garment rental) from a single, intuitive interface.
+This prototype demonstrates the customer-facing portal for Allied's integrated service platform. It showcases how customers can manage all six services (landscaping, indoor plants, coffee/water, amenities, laundry, garment rental) from a single, intuitive interface.
 
 ## Features
 
@@ -16,7 +16,7 @@ This prototype demonstrates the customer-facing portal for Bidvest Living's inte
 - **Personalized Recommendations** using simulated AI
 
 ### 2. Service Management
-- **Service Grid** displaying all 6 Bidvest Living services
+- **Service Grid** displaying all 6 Allied services
 - **Service Status** tracking (active, scheduled, frequency)
 - **Interactive Service Cards** with hover effects
 - **Quick Booking** functionality
@@ -339,7 +339,7 @@ For questions or suggestions about this prototype:
 
 ## License
 
-This prototype is created for Bidvest Living's internal use and strategic planning.
+This prototype is created for Allied's internal use and strategic planning.
 
 ## Version History
 
@@ -354,7 +354,7 @@ This prototype is created for Bidvest Living's internal use and strategic planni
 
 ## Credits
 
-**Design & Development:** Bidvest Living Strategy Team
+**Design & Development:** Allied Strategy Team
 **UI/UX Inspiration:** Modern SaaS platforms (Stripe, Notion, Linear)
 **Icons:** Emoji (for prototype speed)
 **Color Scheme:** Tailwind CSS inspired
@@ -381,6 +381,6 @@ php -S localhost:8000
 
 ---
 
-**🌿 Bidvest Living - Crafting Complete Experiences**
+**🌿 Allied - Crafting Complete Experiences**
 
 *This prototype demonstrates the vision. The implementation will bring it to life.*

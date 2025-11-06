@@ -1,4 +1,4 @@
-# Bidvest Living Prototype - Executive Presentation Guide
+# Allied Prototype - Executive Presentation Guide
 
 ## 📋 Table of Contents
 1. [Presentation Overview](#presentation-overview)
@@ -31,11 +31,11 @@
 
 2. **Services Grid** (scroll to #services)
    - Show all **6 services** now complete:
-     1. 🌳 Landscaping & Grounds Maintenance (Bidvest Top Turf)
+     1. 🌳 Landscaping & Grounds Maintenance (Allied Top Turf)
      2. 🪴 Indoor Plant Solutions (IoT Enabled)
      3. ☕ Coffee & Water Solutions (Aquazania)
      4. 🧴 Custom Amenities & Supplies
-     5. 🧺 Commercial Laundry Services (Bidvest Laundry) ✨ **NEWLY ADDED**
+     5. 🧺 Commercial Laundry Services (Allied Laundry) ✨ **NEWLY ADDED**
      6. 👔 Garment Rental & Management
 
 3. **AI/IoT Automation Section**
@@ -88,7 +88,7 @@ Click **"Get Started"** button (top right or hero section) → Navigate to Welco
    - **"Admin Dashboard Login"** → Operations Management ✨ **NEWLY ADDED**
 
 #### 💬 Talking Points:
-> "This welcome gate creates a premium brand experience. The 3D logo carousel showcases our partner divisions, reinforcing that we're backed by trusted Bidvest brands."
+> "This welcome gate creates a premium brand experience. The 3D logo carousel showcases our partner divisions, reinforcing that we're backed by trusted Allied brands."
 
 > "Notice we've added an admin login path for internal teams - this separates customer-facing and operations flows."
 
@@ -539,7 +539,7 @@ A: "Tier-based: Bronze (1-2 services), Silver (3-4), Gold (4-5, 15% discount), P
 ## 🎤 Opening & Closing Remarks
 
 ### **Opening (30 seconds)**
-> "Thank you for joining today. What you're about to see is a complete, end-to-end platform that solves a critical pain point in facility management: vendor fragmentation. Instead of coordinating with 6 different companies for landscaping, coffee, laundry, and more, Bidvest Living unifies everything into one seamless experience. Let me show you how this works, from the customer's first visit to our website, through their onboarding journey, into their daily management portal, and finally into our operations command center. Let's dive in."
+> "Thank you for joining today. What you're about to see is a complete, end-to-end platform that solves a critical pain point in facility management: vendor fragmentation. Instead of coordinating with 6 different companies for landscaping, coffee, laundry, and more, Allied unifies everything into one seamless experience. Let me show you how this works, from the customer's first visit to our website, through their onboarding journey, into their daily management portal, and finally into our operations command center. Let's dive in."
 
 ### **Closing (1 minute)**
 > "What you've seen today is more than a prototype - it's a vision for the future of integrated facility management. We've built a platform that delivers measurable ROI: 24% carbon reduction, 98% retention, and significant cost savings through tier-based bundling. The technology is ready. The business model is proven. Our 520+ clients and industry case studies validate the demand. The question isn't whether this can work - it's how quickly we can scale it. Thank you. I'm happy to answer any questions."

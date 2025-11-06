@@ -900,7 +900,7 @@ if (document.querySelector('.video-card')) {
 // CONSOLE MESSAGE
 // ========================================
 
-console.log('%c🌱 Bidvest Living - Integrated Services Platform', 'color: #10b981; font-size: 18px; font-weight: bold;');
+console.log('%c🌱 Allied - Integrated Services Platform', 'color: #10b981; font-size: 18px; font-weight: bold;');
 console.log('%cWebsite loaded successfully!', 'color: #059669; font-size: 14px;');
 console.log('%cInterested in our services? Visit: onboarding.html', 'color: #6b7280; font-size: 12px;');
 
@@ -1082,8 +1082,8 @@ function initChatbot() {
         }
 
         const greetings = [
-            `${timeGreeting}! 👋 I'm the Bidvest Living Assistant. I'm here to help you learn about our integrated facility management services. What would you like to know?`,
-            `${timeGreeting}! Welcome to Bidvest Living! 🌱 I can help you explore our 6 integrated services, understand our pricing, or get started with onboarding. How can I assist you today?`,
+            `${timeGreeting}! 👋 I'm the Allied Assistant. I'm here to help you learn about our integrated facility management services. What would you like to know?`,
+            `${timeGreeting}! Welcome to Allied! 🌱 I can help you explore our 6 integrated services, understand our pricing, or get started with onboarding. How can I assist you today?`,
             `${timeGreeting}! Thanks for reaching out! 💬 I'm here to answer questions about our landscaping, plants, coffee, amenities, laundry, and garment services. What interests you?`
         ];
 
@@ -1111,9 +1111,9 @@ function initChatbot() {
 
             'started': 'Great! I\'d be happy to help you get started. You can click the "Get Started" button on this page to begin your onboarding journey, or I can answer any questions you have first. What would you prefer?',
 
-            'contact': 'You can reach us at:\n📞 0800 BIDVEST (243 837) - 24/7 Support\n✉️ hello@bidvestliving.co.za\n📍 Bidvest House, 18 Crescent Drive, Melrose Arch, Johannesburg\n\nWould you like to schedule a consultation?',
+            'contact': 'You can reach us at:\n📞 0800 ALLIED (243 837) - 24/7 Support\n✉️ hello@allied.co.za\n📍 Allied House, 18 Crescent Drive, Melrose Arch, Johannesburg\n\nWould you like to schedule a consultation?',
 
-            'landscaping': 'Our Landscaping & Grounds Maintenance service includes weekly scheduled maintenance, smart irrigation systems, seasonal planting programs, and professional turf management. It\'s provided by Bidvest Top Turf, our trusted division.',
+            'landscaping': 'Our Landscaping & Grounds Maintenance service includes weekly scheduled maintenance, smart irrigation systems, seasonal planting programs, and professional turf management. It\'s provided by Allied Top Turf, our trusted division.',
 
             'plants': 'Indoor Plant Solutions feature AI health monitoring, predictive maintenance alerts, custom design consultation, and air purification solutions. Our IoT-enabled system ensures your plants are always healthy!',
 
@@ -1141,7 +1141,7 @@ function initChatbot() {
 
         // Greeting responses
         if (message.match(/\b(hi|hello|hey|good morning|good afternoon|good evening)\b/)) {
-            return 'Hello! Welcome to Bidvest Living. How can I assist you today? I can help you learn about our services, pricing, or get you started with onboarding.';
+            return 'Hello! Welcome to Allied. How can I assist you today? I can help you learn about our services, pricing, or get you started with onboarding.';
         }
 
         // Thanks responses
@@ -1155,7 +1155,7 @@ function initChatbot() {
         }
 
         // Default response
-        return 'I\'m here to help! You can ask me about our services, pricing, getting started, or contact information. Would you like to speak with a human agent? You can reach us at 0800 BIDVEST (243 837) or hello@bidvestliving.co.za';
+        return 'I\'m here to help! You can ask me about our services, pricing, getting started, or contact information. Would you like to speak with a human agent? You can reach us at 0800 ALLIED (243 837) or hello@allied.co.za';
     }
 
     // Proactive engagement: Show notification and preview message
@@ -1220,7 +1220,7 @@ function initChatbot() {
                     🤖
                 </div>
                 <div style="flex: 1;">
-                    <div style="font-weight: 600; color: #111827; font-size: 0.9rem; margin-bottom: 0.25rem;">Bidvest Living Assistant</div>
+                    <div style="font-weight: 600; color: #111827; font-size: 0.9rem; margin-bottom: 0.25rem;">Allied Assistant</div>
                     <div style="color: #4b5563; font-size: 0.85rem; line-height: 1.4;">${messageText}</div>
                 </div>
                 <button style="background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 1.25rem; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">×</button>
@@ -1266,53 +1266,3 @@ if (document.readyState === 'loading') {
 // AUTOMATION STAT COUNTER ANIMATION
 // ========================================
 
-function animateStatCounters() {
-    const statValues = document.querySelectorAll('.stat-value');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                entry.target.classList.add('counted');
-                const target = parseFloat(entry.target.getAttribute('data-target'));
-                const duration = 2000; // 2 seconds
-                const increment = target / (duration / 16); // 60fps
-                let current = 0;
-
-                const updateCounter = () => {
-                    current += increment;
-                    if (current < target) {
-                        // Format numbers appropriately
-                        if (target >= 1000) {
-                            entry.target.textContent = Math.floor(current).toLocaleString();
-                        } else if (target % 1 !== 0) {
-                            entry.target.textContent = current.toFixed(1);
-                        } else {
-                            entry.target.textContent = Math.floor(current);
-                        }
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        // Final value with proper formatting
-                        if (target >= 1000) {
-                            entry.target.textContent = target.toLocaleString();
-                        } else if (target % 1 !== 0) {
-                            entry.target.textContent = target.toFixed(1);
-                        } else {
-                            entry.target.textContent = target;
-                        }
-                    }
-                };
-
-                updateCounter();
-            }
-        });
-    }, { threshold: 0.5 });
-
-    statValues.forEach(stat => observer.observe(stat));
-}
-
-// Initialize automation animations
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', animateStatCounters);
-} else {
-    animateStatCounters();
-}
