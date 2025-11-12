@@ -283,7 +283,7 @@ function generatePersonalizedRecommendations() {
             icon: '🌺',
             title: 'Seasonal Landscaping Refresh',
             description: 'Based on your location and preferences, we recommend updating your seasonal plantings for spring.',
-            savings: 'Save 20% when bundled'
+            savings: 'Save 8% when bundled'
         },
         {
             icon: '☕',
@@ -295,7 +295,7 @@ function generatePersonalizedRecommendations() {
             icon: '🪴',
             title: 'Air Purifying Plant Package',
             description: 'Enhance indoor air quality with our curated selection of NASA-approved air-purifying plants.',
-            savings: 'Save 15% on package'
+            savings: 'Save 8% on package'
         },
         {
             icon: '♻️',
@@ -603,7 +603,7 @@ const CustomerChatbot = {
     accountData: {
         name: 'Luxury Resort Group',
         tier: 'Gold Tier',
-        discount: '15%',
+        discount: '5%',
         loyaltyPoints: 2840,
         pointsToNextTier: 1160,
         nextTier: 'Platinum',
@@ -936,7 +936,7 @@ const CustomerChatbot = {
 
         // Default response
         return {
-            text: `<p>I'm here to help! You can ask me about:</p>
+            text: `<p>I'm ALLY, here to help! You can ask me about:</p>
                   <ul>
                     <li>📅 "When is my next service?"</li>
                     <li>🎁 "Show me my loyalty points"</li>

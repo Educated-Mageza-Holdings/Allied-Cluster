@@ -271,17 +271,17 @@ function updateSummary() {
     let tier = 'No discount';
 
     if (serviceCount >= 6) {
-        discount = 20;
-        tier = 'Platinum Tier (20%)';
+        discount = 8;
+        tier = 'Platinum Tier (8%)';
     } else if (serviceCount >= 4) {
-        discount = 15;
-        tier = 'Gold Tier (15%)';
-    } else if (serviceCount >= 3) {
-        discount = 10;
-        tier = 'Silver Tier (10%)';
-    } else if (serviceCount >= 2) {
         discount = 5;
-        tier = 'Bronze Tier (5%)';
+        tier = 'Gold Tier (5%)';
+    } else if (serviceCount >= 3) {
+        discount = 2.5;
+        tier = 'Silver Tier (2.5%)';
+    } else if (serviceCount >= 2) {
+        discount = 2;
+        tier = 'Bronze Tier (2%)';
     }
 
     // Update discount display

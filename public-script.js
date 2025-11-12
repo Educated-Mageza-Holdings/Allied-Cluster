@@ -542,7 +542,6 @@ function updatePricing() {
         'plants': { name: 'Indoor Plants', icon: '🪴' },
         'coffee': { name: 'Coffee & Water', icon: '☕' },
         'amenities': { name: 'Custom Amenities', icon: '🧴' },
-        'laundry': { name: 'Commercial Laundry', icon: '🧺' },
         'garments': { name: 'Garment Rental', icon: '👔' }
     };
 
@@ -570,7 +569,7 @@ function updatePricing() {
     let savingsLevel = 'Standard';
     let benefits = [];
 
-    if (selectedCount >= 6) {
+    if (selectedCount >= 5) {
         tierName = 'Platinum Partner';
         tierClass = 'platinum';
         savingsLevel = 'Maximum Benefits';
@@ -584,7 +583,7 @@ function updatePricing() {
             '✓ Strategic partnership status',
             '✓ Co-branded marketing opportunities'
         ];
-    } else if (selectedCount >= 4) {
+    } else if (selectedCount >= 3) {
         tierName = 'Gold Partner';
         tierClass = 'gold';
         savingsLevel = 'Premium Benefits';
@@ -640,6 +639,9 @@ function updatePricing() {
 
     if (tierNameElement) {
         tierNameElement.textContent = tierName;
+        tierNameElement.style.transition = 'all 0.3s ease';
+        tierNameElement.style.color = getTierColor(tierClass);
+        tierNameElement.style.fontWeight = '700';
     }
 
     if (discountElement) {
@@ -661,14 +663,6 @@ function updatePricing() {
             resultCard.style.transform = 'scale(1)';
             resultCard.style.boxShadow = '';
         }, 300);
-    }
-
-    // Update tier display with color coding
-    const tierNameElement = document.getElementById('tier-name');
-    if (tierNameElement) {
-        tierNameElement.style.transition = 'all 0.3s ease';
-        tierNameElement.style.color = getTierColor(tierClass);
-        tierNameElement.style.fontWeight = '700';
     }
 
     // Highlight matching tier in pricing section
@@ -1089,9 +1083,9 @@ function initChatbot() {
         }
 
         const greetings = [
-            `${timeGreeting}! 👋 I'm the Allied Assistant. I'm here to help you learn about our integrated facility management services. What would you like to know?`,
-            `${timeGreeting}! Welcome to Allied! 🌱 I can help you explore our 6 integrated services, understand our pricing, or get started with onboarding. How can I assist you today?`,
-            `${timeGreeting}! Thanks for reaching out! 💬 I'm here to answer questions about our landscaping, plants, coffee, amenities, laundry, and garment services. What interests you?`
+            `${timeGreeting}! 👋 I'm ALLY. I'm here to help you learn about our integrated facility management services. What would you like to know?`,
+            `${timeGreeting}! Welcome to Allied! 🌱 I can help you explore our 5 integrated services, understand our pricing, or get started with onboarding. How can I assist you today?`,
+            `${timeGreeting}! Thanks for reaching out! 💬 I'm here to answer questions about our landscaping, plants, coffee, amenities, and garment services. What interests you?`
         ];
 
         // Randomly select a greeting
@@ -1112,9 +1106,9 @@ function initChatbot() {
 
         // Knowledge base responses
         const responses = {
-            'services': 'We offer 6 integrated services: Landscaping & Grounds Maintenance, Indoor Plant Solutions, Coffee & Water, Custom Amenities, Commercial Laundry, and Garment Rental. Would you like to know more about any specific service?',
+            'services': 'We offer 5 integrated services: Landscaping & Grounds Maintenance, Indoor Plant Solutions, Coffee & Water, Custom Amenities, and Garment Rental. Would you like to know more about any specific service?',
 
-            'pricing': 'Our pricing is based on partnership tiers: Bronze (1-2 services), Silver (2-3 services), Gold (4-5 services), and Platinum (all 6 services). The more services you bundle, the more you save! Would you like to start building your custom package?',
+            'pricing': 'Our pricing is based on partnership tiers: Bronze (2 services - save up to 2%), Silver (3 services - save up to 2.5%), Gold (4 services - save up to 5%), and Platinum (all 6 services - save up to 8%). The more services you bundle, the more you save! Would you like to start building your custom package?',
 
             'started': 'Great! I\'d be happy to help you get started. You can click the "Get Started" button on this page to begin your onboarding journey, or I can answer any questions you have first. What would you prefer?',
 
@@ -1136,7 +1130,7 @@ function initChatbot() {
 
             'industries': 'We serve 7 key industries: Hospitality (150+ clients), Healthcare (85+ clients), Corporate (120+ clients), Education (65+ clients), Retail (45+ clients), Industrial (30+ clients), and Residential (25+ clients).',
 
-            'benefits': 'Bundling services gives you: Up to 20% savings, one unified dashboard, reduced carbon footprint, AI-powered optimization, priority scheduling, dedicated account management, and more. The more services, the better the benefits!'
+            'benefits': 'Bundling services gives you: Up to 8% savings, one unified dashboard, reduced carbon footprint, AI-powered optimization, priority scheduling, dedicated account management, and more. The more services, the better the benefits!'
         };
 
         // Check for keywords and return appropriate response
@@ -1148,7 +1142,7 @@ function initChatbot() {
 
         // Greeting responses
         if (message.match(/\b(hi|hello|hey|good morning|good afternoon|good evening)\b/)) {
-            return 'Hello! Welcome to Allied. How can I assist you today? I can help you learn about our services, pricing, or get you started with onboarding.';
+            return 'Hello! I\'m ALLY, welcome to Allied. How can I assist you today? I can help you learn about our services, pricing, or get you started with onboarding.';
         }
 
         // Thanks responses
@@ -1158,7 +1152,7 @@ function initChatbot() {
 
         // Help responses
         if (message.match(/\b(help|assist|support)\b/)) {
-            return 'I\'m here to help! I can assist you with:\n- Learning about our 6 integrated services\n- Understanding our pricing and partnership tiers\n- Getting started with onboarding\n- Contacting our team\n- Industry-specific solutions\n\nWhat would you like to know more about?';
+            return 'I\'m here to help! I can assist you with:\n- Learning about our 5 integrated services\n- Understanding our pricing and partnership tiers\n- Getting started with onboarding\n- Contacting our team\n- Industry-specific solutions\n\nWhat would you like to know more about?';
         }
 
         // Default response
@@ -1227,7 +1221,7 @@ function initChatbot() {
                     🤖
                 </div>
                 <div style="flex: 1;">
-                    <div style="font-weight: 600; color: #111827; font-size: 0.9rem; margin-bottom: 0.25rem;">Allied Assistant</div>
+                    <div style="font-weight: 600; color: #111827; font-size: 0.9rem; margin-bottom: 0.25rem;">Ally</div>
                     <div style="color: #4b5563; font-size: 0.85rem; line-height: 1.4;">${messageText}</div>
                 </div>
                 <button style="background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 1.25rem; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">×</button>

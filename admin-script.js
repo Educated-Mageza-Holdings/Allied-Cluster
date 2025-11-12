@@ -483,7 +483,7 @@ function showServiceDetails(serviceId) {
                 <div class="detail-section">
                     <h3>Customer Information</h3>
                     <p><strong>Name:</strong> Luxury Resort Group</p>
-                    <p><strong>Tier:</strong> Gold (15% discount)</p>
+                    <p><strong>Tier:</strong> Gold (5% discount)</p>
                     <p><strong>Contact:</strong> operations@luxuryresort.com</p>
                 </div>
                 <div class="detail-section">
@@ -555,7 +555,7 @@ function showCustomerDetails(customerName) {
                 <div class="detail-section">
                     <h3>Account Overview</h3>
                     <p><strong>Customer Type:</strong> Luxury Hotels</p>
-                    <p><strong>Tier:</strong> Gold (15% discount)</p>
+                    <p><strong>Tier:</strong> Gold (5% discount)</p>
                     <p><strong>Member Since:</strong> January 2023</p>
                     <p><strong>Account Manager:</strong> Sarah Chen</p>
                 </div>
@@ -1105,7 +1105,7 @@ const StaffChatbot = {
                         <li><strong>Gold Tier:</strong> 2 customers (Luxury Resort Group, Grand Hotel)</li>
                         <li><strong>Silver Tier:</strong> 1 customer (Corporate Plaza)</li>
                       </ul>
-                      <p>Platinum customers receive 20% discount, Gold get 15%, and Silver get 10%.</p>`,
+                      <p>Platinum customers receive 8% discount, Gold get 5%, Silver get 2.5%, and Bronze get 2%.</p>`,
                 data: null
             };
         }
@@ -1127,7 +1127,7 @@ const StaffChatbot = {
 
         // Default response
         return {
-            text: `<p>I can help you with information about:</p>
+            text: `<p>I'm ALLY, your admin assistant. I can help you with information about:</p>
                   <ul>
                     <li>Specific customer details (try "Show me Luxury Resort Group")</li>
                     <li>Revenue information</li>
@@ -1154,4 +1154,4 @@ window.showCustomerDetails = showCustomerDetails;
 
 console.log('🔧 Allied Environments Operations Dashboard Loaded');
 console.log('📊 Real-time monitoring active');
-console.log('🤖 Staff Assistant Chatbot Ready');
+console.log('🤖 Ally Chatbot Ready');
